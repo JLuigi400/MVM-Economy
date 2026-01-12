@@ -1,0 +1,328 @@
+# MvM Economy Dashboard - URLs de Recursos
+
+## 📚 Índice
+- Imágenes de Piezas Robot
+- Imágenes de Cosméticos (Sheens/Effects)
+- Wiki TF2 oficial
+- Herramientas externas
+
+---
+
+### 💵 Imagenes de Economia Mann Co
+
+Mann Co. Supply Crate Key (Key)
+- URL: https://wiki.teamfortress.com/w/images/8/83/Backpack_Mann_Co._Supply_Crate_Key.png
+- Estado: [ ] Verificada
+- Notas: Imagen oficial en la Wiki de TF2. Fuente: https://wiki.teamfortress.com/wiki/Mann_Co._Supply_Crate_Key
+
+Scrap Metal
+- URL: https://stntrading.eu/img/4stu_NyqGxkK_KA_vyt4XpYP2f4RS8h6D4RY1OBpsFE/aHR0cHM6Ly9zdGVhbWNvbW11bml0eS1hLmFrYW1haWhkLm5ldC9lY29ub215L2ltYWdlL2ZXRmM4MmpzMGZtb1JBUC1xT0lQdTVUSFNXcWZTbVRFTExxY1V5d0draWpWalpVTFVyc20xai05eGdFYlpRc1VZaFRraHpKV2hzUFpBZk9lRC1WT240cGh0c2RRMzJadHhGWW9ON1BrWW1WbUlnZWFVS05hWF9SanB3eThVSE16NnBjeEFJZm5vdlVXSjF0OW5ZRnFZdw.webp
+- Estado: [ ] Verificada
+- Notas: Imagen de stock tomada de STNTrading (enlace largo). Se sugiere acortar o sustituir por un thumbnail más estable.
+
+Reclaimed Metal
+- URL: https://stntrading.eu/img/ot1dssgtMUNTv_eij02aDJUKW3G6Jm7zm-ahlNqQ3wA/aHR0cHM6Ly9zdGVhbWNvbW11bml0eS1hLmFrYW1haWhkLm5ldC9lY29ub215L2ltYWdlL2ZXRmM4MmpzMGZtb1JBUC1xT0lQdTVUSFNXcWZTbVRFTExxY1V5d0draWpWalpVTFVyc20xai05eGdFYlpRc1VZaFRraHpKV2hzTzBNdjZOR3VjRjFZSmxzY01FZ0RkdnhWWXNNTFBrTW1GakkxT1NVdk1IRFBCcDlsdTBDblZsdVpReEE5R3dwLWhJT1ZLNHNNTU5XRjQ.webp
+- Estado: [ ] Verificada
+- Notas: Imagen de stock tomada de STNTrading (enlace largo). Se sugiere acortar o sustituir por un thumbnail más estable.
+
+Refined Metal
+- URL: https://stntrading.eu/img/ILIsUnuALeEj1hpA9H5Nn4efBlrUSoHfq4onvg3s040/aHR0cHM6Ly9zdGVhbWNvbW11bml0eS1hLmFrYW1haWhkLm5ldC9lY29ub215L2ltYWdlL2ZXRmM4MmpzMGZtb1JBUC1xT0lQdTVUSFNXcWZTbVRFTExxY1V5d0draWpWalpVTFVyc20xai05eGdFYlpRc1VZaFRraHpKV2hzTzFNdjZOR3VjRjFZZ3p0OFpRaWpKdWtGTWlNcmJoWURFd0kxeVJWS05mRDZ4b3JRM3FXM0pyNjU0NkROUHVvdTlJT1ZLNHA0a1dKYUE.webp
+- Estado: [ ] Verificada
+- Notas: Imagen de stock tomada de STNTrading (enlace largo). Se sugiere acortar o sustituir por un thumbnail más estable.
+
+---
+
+## 🤖 Imágenes de Piezas Robot
+
+### Robot Parts - Referencias
+```
+Reinforced Robot Bomb Stabilizer
+- URL: https://wiki.teamfortress.com/w/images/4/4e/Backpack_Reinforced_Robot_Bomb_Stabilizer.png
+- Estado: [ ] Verificada
+- Notas: 
+
+Reinforced Robot Emotion Detector
+- URL: https://wiki.teamfortress.com/w/images/2/29/Backpack_Reinforced_Robot_Emotion_Detector.png
+- Estado: [ ] Verificada
+- Notas: 
+
+Reinforced Robot Humor Suppression Pump
+- URL: https://wiki.teamfortress.com/w/images/c/c8/Backpack_Reinforced_Robot_Humor_Suppression_Pump.png
+- Estado: [ ] Verificada
+- Notas: 
+
+Battle-Worn Robot KB-808
+- URL: https://wiki.teamfortress.com/w/images/b/be/Backpack_Battle-Worn_Robot_KB-808.png
+- Estado: [ ] Verificada
+- Notas: 
+
+Battle-Worn Robot Money Furnace
+- URL: https://wiki.teamfortress.com/w/images/1/1c/Backpack_Battle-Worn_Robot_Money_Furnace.png
+- Estado: [ ] Verificada
+- Notas: 
+
+Battle-Worn Robot Taunt Processor
+- URL: https://wiki.teamfortress.com/w/images/b/bb/Backpack_Battle-Worn_Robot_Taunt_Processor.png
+- Estado: [ ] Verificada
+- Notas: 
+
+Pristine Robot Currency Digester
+- URL: https://wiki.teamfortress.com/w/images/2/2a/Backpack_Pristine_Robot_Currency_Digester.png
+- Estado: [ ] Verificada
+- Notas: 
+
+Pristine Robot Brainstorm Bulb
+- URL: https://wiki.teamfortress.com/w/images/2/21/Backpack_Pristine_Robot_Brainstorm_Bulb.png
+- Estado: [ ] Verificada
+- Notas: 
+
+---
+
+## Imagenes de Killstreak Kit
+
+### Basic Killstreak
+- URL: https://wiki.teamfortress.com/w/images/e/e4/Item_icon_Killstreak_Kit.png
+- Estado [ ] Verificada
+- Notas: Este es el estado "Representativo del Killstreak Kit Basico"
+
+### Specialized Killstreak
+- URL: https://wiki.teamfortress.com/w/images/2/2e/Item_icon_Specialized_Killstreak_Kit.png
+- Estado [ ] Verificada
+- Notas: Este es el estado "Representativo del Killstreak Kit Especializado"
+
+### Profesional Killstreak
+- URL: https://wiki.teamfortress.com/w/images/f/f3/Item_icon_Professional_Killstreak_Kit.png
+- Estado [ ] Verificada
+- Notas: Este es el estado "Representativo del Killstreak Kit Profesional"
+
+### Specialized Fabricator
+- URL: https://wiki.teamfortress.com/w/images/c/cc/Backpack_Specialized_Killstreak_Kit_Fabricator.png
+- Estado [ ] Verificada
+- Notas: Este es el estado "Representativo del Fabricador Killstreak Kit Especializado"
+
+### Specialized Fabricator
+- URL: https://wiki.teamfortress.com/w/images/b/bf/Backpack_Professional_Killstreak_Kit_Fabricator.png
+- Estado [ ] Verificada
+- Notas: Este es el estado "Representativo del Fabricador Killstreak Kit Profesional"
+
+---
+
+## 💎 Imágenes de Cosméticos (Sheens)
+
+### Team Shine
+- URL RED: https://wiki.teamfortress.com/w/images/1/10/Killstreak_Team_Shine_RED.png
+- URL BLU: https://wiki.teamfortress.com/w/images/7/72/Killstreak_Team_Shine_BLU.png
+- Tier: God
+- Color HEX: #C8140F 
+- Color HEX: #2862C8
+- Estado: [ ] Verificada
+- Notas: El Team Shine posee 2 colores debido a representar al equipo RED / BLU 
+
+### Hot Rod
+- URL: https://wiki.teamfortress.com/w/images/3/31/Killstreak_Hot_Rod.png
+- Tier: High
+- Color HEX: #FF1EFF
+- Estado: [ ] Verificada
+- Notas: Muestra una imagen del arma con el color representado
+
+### Manndarin
+- URL: https://wiki.teamfortress.com/w/images/c/c4/Killstreak_Manndarin.png
+- Tier: Mid
+- Color HEX: #FF4B05
+- Estado: [ ] Verificada
+- Notas: Muestra una imagen del arma con el color representado
+
+### Deadly Daffodil
+- URL: https://wiki.teamfortress.com/w/images/6/62/Killstreak_Deadly_Daffodil.png
+- Tier: Mid
+- Color HEX: #F2AC0A
+- Estado: [ ] Verificada
+- Notas: Muestra una imagen del arma con el color representado
+
+### Agonizing Emerald
+- URL: https://wiki.teamfortress.com/w/images/e/e8/Killstreak_Agonizing_Emerald.png
+- Tier: Low
+- Color HEX: #28FF46
+- Estado: [ ] Verificada
+- Notas: Muestra una imagen del arma con el color representado
+
+### Mean Green
+- URL: https://wiki.teamfortress.com/w/images/b/b1/Killstreak_Mean_Green.png
+- Tier: Low
+- Color HEX: #64FF0A
+- Estado: [ ] Verificada
+- Notas: Muestra una imagen del arma con el color representado
+
+### Villainous Violet
+- URL: https://wiki.teamfortress.com/w/images/f/fe/Killstreak_Villainous_Violet.png
+- Tier: High
+- Color HEX: #6914FF
+- Estado: [ ] Verificada
+- Notas: Muestra una imagen del arma con el color representado
+
+---
+
+## ✨ Imágenes de Efectos (Killstreakers)
+
+### Fire Horns
+- URL: https://wiki.teamfortress.com/w/images/d/d1/Killstreak_Fire_Horns_T2_7.png
+- Tier: God
+- Estado: [ ] Verificada
+- Notas: Se usara el Team Shine BLU para denotar el efecto de 10 Kills
+
+### Cerebral Discharge
+- URL: https://wiki.teamfortress.com/w/images/1/16/Killstreak_Cerebral_Discharge_T2_7.png
+- Tier: High
+- Estado: [ ] Verificada
+- Notas: Se usara el Team Shine BLU para denotar el efecto de 10 Kills
+
+### Tornado
+- URL: https://wiki.teamfortress.com/w/images/e/e9/Killstreak_Tornado_T2_7.png
+- Tier: High
+- Estado: [ ] Verificada
+- Notas: Se usara el Team Shine BLU para denotar el efecto de 10 Kills
+
+### Singularity
+- URL: https://wiki.teamfortress.com/w/images/4/40/Killstreak_Singularity_T2_7.png
+- Tier: Mid
+- Estado: [ ] Verificada
+- Notas: Se usara el Team Shine BLU para denotar el efecto de 10 Kills
+
+### Incinerator
+- URL: https://wiki.teamfortress.com/w/images/a/a8/Killstreak_Incinerator_T2_6.png
+- Tier: Mid
+- Estado: [ ] Verificada
+- Notas: Se usara el Team Shine BLU para denotar el efecto de 10 Kills
+
+### Flames
+- URL: https://wiki.teamfortress.com/w/images/3/39/Killstreak_Flames_T2_7.png
+- Tier: Low
+- Estado: [ ] Verificada
+- Notas: Se usara el Team Shine BLU para denotar el efecto de 10 Kills
+
+### Hypno-Beam
+- URL: https://wiki.teamfortress.com/w/images/b/b8/Killstreak_Hypno-Beam_T2_7.png
+- Tier: Low
+- Estado: [ ] Verificada
+- Notas: Se usara el Team Shine BLU para denotar el efecto de 10 Kills
+
+---
+
+## 💂🏻 Icon Mercenaries
+- Scout Profile Icon: https://wiki.teamfortress.com/w/images/1/13/Icon_scout.jpg
+- Class Icon: https://wiki.teamfortress.com/w/images/a/ad/Leaderboard_class_scout.png
+- Estado: [ ] Verificada
+- Notas: Muestra de la Wiki Oficial de wiki.teamfortress.com/wiki
+
+- Soldier Profile Icon: https://wiki.teamfortress.com/w/images/c/c1/Icon_soldier.jpg
+- Class Icon: https://wiki.teamfortress.com/w/images/9/96/Leaderboard_class_soldier.png
+- Estado: [ ] Verificada
+- Notas: Muestra de la Wiki Oficial de wiki.teamfortress.com/wiki
+
+- Pyro Profile Icon: https://wiki.teamfortress.com/w/images/1/13/Icon_pyro.jpg
+- Class Icon: https://wiki.teamfortress.com/w/images/8/80/Leaderboard_class_pyro.png
+- Estado: [ ] Verificada
+- Notas: Muestra de la Wiki Oficial de wiki.teamfortress.com/wiki
+
+- Demoman Profile Icon: https://wiki.teamfortress.com/w/images/c/c0/Icon_demoman.jpg
+- Class Icon: https://wiki.teamfortress.com/w/images/4/47/Leaderboard_class_demoman.png
+- Estado: [ ] Verificada
+- Notas: Muestra de la Wiki Oficial de wiki.teamfortress.com/wiki
+
+- Heavy Profile Icon: https://wiki.teamfortress.com/w/images/8/8e/Icon_heavy.jpg
+- Class Icon: https://wiki.teamfortress.com/w/images/5/5a/Leaderboard_class_heavy.png
+- Estado: [ ] Verificada
+- Notas: Muestra de la Wiki Oficial de wiki.teamfortress.com/wiki
+
+- Engineer Profile Icon: https://wiki.teamfortress.com/w/images/b/bc/Icon_engineer.jpg
+- Class Icon: https://wiki.teamfortress.com/w/images/1/12/Leaderboard_class_engineer.png
+- Estado: [ ] Verificada
+- Notas: Muestra de la Wiki Oficial de wiki.teamfortress.com/wiki
+
+- Medic Profile Icon: https://wiki.teamfortress.com/w/images/f/f5/Icon_medic.jpg
+- Class Icon: https://wiki.teamfortress.com/w/images/e/e5/Leaderboard_class_medic.png
+- Estado: [ ] Verificada
+- Notas: Muestra de la Wiki Oficial de wiki.teamfortress.com/wiki
+
+- Sniper Profile Icon: https://wiki.teamfortress.com/w/images/a/ac/Icon_sniper.jpg
+- Class Icon: https://wiki.teamfortress.com/w/images/f/fe/Leaderboard_class_sniper.png
+- Estado: [ ] Verificada
+- Notas: Muestra de la Wiki Oficial de wiki.teamfortress.com/wiki
+
+- Spy Profile Icon: https://wiki.teamfortress.com/w/images/9/9b/Icon_spy.jpg
+- Class Icon: https://wiki.teamfortress.com/w/images/3/33/Leaderboard_class_spy.png
+- Estado: [ ] Verificada
+- Notas: Muestra de la Wiki Oficial de wiki.teamfortress.com/wiki
+
+---
+
+## 📖 Wiki TF2 Oficial
+
+### Referencias generales
+- **Página principal**: https://wiki.teamfortress.com/wiki/Main_Page
+- **Mann vs Machine**: https://wiki.teamfortress.com/wiki/Mann_vs._Machine
+- **Robot Parts**: https://wiki.teamfortress.com/wiki/Robot_Parts
+- **Killstreak Kits**: https://wiki.teamfortress.com/wiki/Killstreak_Kit
+
+### Tablas de contenido
+- **Item Quality**: https://wiki.teamfortress.com/wiki/Item_quality
+- **Cosmetics**: https://wiki.teamfortress.com/wiki/Cosmetic_items
+- **Weapons**: https://wiki.teamfortress.com/wiki/Weapons
+
+---
+
+## 🔗 Herramientas Externas
+
+### Bases de Datos de ítems
+- **Backpack.tf**: https://backpack.tf/
+  - Descrip: Comunidad TF2, precios y trading
+  - Estado: [ ] Verificada
+  
+- **Scrap.tf**: https://scrap.tf/
+  - Descrip: Bot de trading automático
+  - Estado: [ ] Verificada
+  
+- **All-in-One TF2 Item Database**: https://tf2.alliedmodders.net/items/
+  - Descrip: Base de datos JSON de todos los ítems
+  - Estado: [ ] No visible
+
+### APIs
+- **TF2 Schema API**: https://api.steampowered.com/IEconItems_440/GetSchemaItems/v1/
+  - Descrip: API oficial de Valve (requiere API key)
+  - Estado: [ ] No Visible
+
+---
+
+## 📝 Estado General del Proyecto
+
+**Recursos Verificados**: 0/39
+**Imágenes faltantes**: 39
+**Próximos pasos**:
+- [ ] Verificar URLs en el navegador
+- [ ] Descargar imágenes localmente (opcional)
+- [ ] Actualizar piezas.imagen_url en base de datos
+- [ ] Integrar imágenes en componentes InventoryCard/FabricadorCard
+
+---
+
+## 🚀 Cómo agregar imágenes al proyecto
+
+1. **Actualizar base de datos**:
+   ```sql
+   UPDATE piezas SET imagen_url = 'https://...' WHERE nombre = 'Reinforced Robot Bomb Stabilizer';
+   ```
+
+2. **Actualizar componente InventoryCard.jsx**:
+   ```jsx
+   {pieza.imagen_url && <img src={pieza.imagen_url} alt={pieza.nombre} />}
+   ```
+
+3. **Agregar estilos CSS** para mostrar imágenes:
+   ```css
+   .inventory-card img { width: 80px; height: 80px; object-fit: contain; }
+   ```
+
+---
+
+**Última actualización**: 23 de Diciembre 2025
+**Responsable de verificación**: Usuario + Assistant

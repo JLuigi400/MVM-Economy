@@ -1,0 +1,192 @@
+/* ========================================
+   TF2 MANN CO. FORGE - CALCULATOR
+   Estilos de la calculadora de costos
+   ======================================== */
+
+/* ===== CALCULADORA LAYOUT ===== */
+.calculator-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: var(--spacing-xl);
+}
+
+.calc-panel {
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+}
+
+/* ===== CONFIG GRID ===== */
+.config-grid {
+    padding: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.config-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-sm);
+    background: var(--bg-input);
+    border-radius: var(--radius-sm);
+}
+
+.config-item.highlight {
+    background: rgba(255, 215, 0, 0.1);
+    border: 1px solid var(--god-tier);
+}
+
+.config-item label {
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.config-input {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.config-input input {
+    width: 80px;
+    padding: var(--spacing-sm);
+    background: var(--bg-card);
+    border: 1px solid var(--border-inactive);
+    border-radius: var(--radius-sm);
+    color: var(--text-main);
+    font-size: 1rem;
+    text-align: right;
+}
+
+.config-input input:focus {
+    outline: none;
+    border-color: var(--accent-blu);
+}
+
+.config-input span {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* ===== CALCULATE BUTTON ===== */
+.btn-calculate {
+    margin: 0 var(--spacing-lg) var(--spacing-lg);
+    padding: var(--spacing-md);
+    background: var(--accent-blu);
+    border: none;
+    border-radius: var(--radius-sm);
+    color: white;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    transition: all var(--transition-normal);
+}
+
+.btn-calculate:hover {
+    background: #3385ff;
+    transform: translateY(-2px);
+}
+
+/* ===== RESULTS BREAKDOWN ===== */
+.results-breakdown {
+    padding: var(--spacing-lg);
+}
+
+.breakdown-item {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    border-bottom: 1px solid var(--border-inactive);
+    align-items: center;
+}
+
+.breakdown-item.highlight {
+    background: rgba(255, 215, 0, 0.1);
+    border-radius: var(--radius-sm);
+    border: none;
+    margin-bottom: var(--spacing-sm);
+}
+
+.breakdown-label {
+    color: var(--text-secondary);
+}
+
+.breakdown-count {
+    color: var(--text-main);
+    font-weight: 600;
+    text-align: right;
+}
+
+.breakdown-value {
+    color: var(--accent-blu);
+    font-weight: 700;
+    text-align: right;
+    min-width: 80px;
+}
+
+/* ===== BREAKDOWN TOTAL ===== */
+.breakdown-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-lg);
+    background: linear-gradient(135deg, var(--accent-red) 0%, #cc3333 100%);
+    border-radius: var(--radius-sm);
+    margin-top: var(--spacing-md);
+}
+
+.total-label {
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.total-value {
+    font-size: 1.5rem;
+    font-weight: 900;
+}
+
+/* ===== BREAKDOWN CONVERSION ===== */
+.breakdown-conversion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-md);
+    background: rgba(255, 215, 0, 0.1);
+    border-radius: var(--radius-sm);
+    margin-top: var(--spacing-md);
+    border: 1px solid var(--god-tier);
+}
+
+.conversion-label {
+    color: var(--text-secondary);
+}
+
+.conversion-value {
+    color: var(--god-tier);
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+/* ===== CALCULATOR RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .calculator-layout {
+        grid-template-columns: 1fr;
+    }
+    
+    .breakdown-item {
+        grid-template-columns: 1fr auto;
+    }
+    
+    .breakdown-count {
+        grid-column: span 2;
+    }
+}

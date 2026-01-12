@@ -1,0 +1,1644 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TF2 Mann Co. Forge - MvM Economy Dashboard</title>
+    <!-- CSS Modular - Imports organizados por categoría -->
+    <link rel="stylesheet" href="css/main.css?v=1">
+    <!-- Fallback: styles.css contiene estilos no migrados aún -->
+    <link rel="stylesheet" href="styles.css?v=55">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header Principal -->
+    <header class="main-header">
+        <div class="logo">
+            <span class="logo-icon">⚙️</span>
+            <h1>TF2 Mann Co. <span class="highlight">Forge</span></h1>
+        </div>
+        <div class="header-stats">
+            <div class="stat-badge">
+                <span class="stat-label">Valor Total:</span>
+                <span class="stat-value" id="totalValue">0.00 Ref</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navegación por Tabs -->
+    <nav class="tab-navigation">
+        <button class="tab-btn active" data-tab="dashboard">
+            <span class="tab-icon">📊</span>
+            Dashboard
+        </button>
+        <button class="tab-btn" data-tab="backpack">
+            <span class="tab-icon">🎒</span>
+            Mochila
+        </button>
+        <button class="tab-btn" data-tab="forge">
+            <span class="tab-icon">🔥</span>
+            La Forja
+        </button>
+        <button class="tab-btn" data-tab="calculator">
+            <span class="tab-icon">🧮</span>
+            Calculadora
+        </button>
+        <button class="tab-btn" data-tab="market">
+            <span class="tab-icon">🏪</span>
+            Mercado
+        </button>
+    </nav>
+
+    <!-- Contenedor Principal -->
+    <main class="main-container">
+        
+        <!-- ========== TAB: DASHBOARD ========== -->
+        <section id="dashboard" class="tab-content active">
+            <!-- Banner de Alertas -->
+            <div class="alert-banner" id="alertBanner">
+                <span class="alert-icon">📢</span>
+                <span class="alert-text">¡Bienvenido a Mann Co. Forge! Gestiona tu inventario MvM como un profesional.</span>
+                <button class="alert-close" onclick="closeAlert()">✕</button>
+            </div>
+
+            <!-- Resumen Rápido -->
+            <div class="section-header">
+                <h2>📦 Resumen de Inventario</h2>
+            </div>
+            
+            <div class="dashboard-grid">
+                <!-- Tarjeta de Metal -->
+                <div class="summary-card currency-card">
+                    <div class="card-header">
+                        <h3>💰 Currency (Metal)</h3>
+                    </div>
+                    <div class="currency-display">
+                        <div class="currency-item">
+                            <span class="currency-icon scrap">
+                                <img src="https://stntrading.eu/img/4stu_NyqGxkK_KA_vyt4XpYP2f4RS8h6D4RY1OBpsFE/aHR0cHM6Ly9zdGVhbWNvbW11bml0eS1hLmFrYW1haWhkLm5ldC9lY29ub215L2ltYWdlL2ZXRmM4MmpzMGZtb1JBUC1xT0lQdTVUSFNXcWZTbVRFTExxY1V5d0draWpWalpVTFVyc20xai05eGdFYlpRc1VZaFRraHpKV2hzUFpBZk9lRC1WT240cGh0c2RRMzJadHhGWW9ON1BrWW1WbUlnZWFVS05hWF9SanB3eThVSE16NnBjeEFJZm5vdlVXSjF0OW5ZRnFZdw.webp" alt="Scrap">
+                            </span>
+                            <span class="currency-name">Scrap</span>
+                            <span class="currency-count" id="dash-scrap">0</span>
+                        </div>
+                        <div class="currency-item">
+                            <span class="currency-icon rec">
+                                <img src="https://stntrading.eu/img/ot1dssgtMUNTv_eij02aDJUKW3G6Jm7zm-ahlNqQ3wA/aHR0cHM6Ly9zdGVhbWNvbW11bml0eS1hLmFrYW1haWhkLm5ldC9lY29ub215L2ltYWdlL2ZXRmM4MmpzMGZtb1JBUC1xT0lQdTVUSFNXcWZTbVRFTExxY1V5d0draWpWalpVTFVyc20xai05eGdFYlpRc1VZaFRraHpKV2hzTzBNdjZOR3VjRjFZSmxzY01FZ0RkdnhWWXNNTFBrTW1GakkxT1NVdk1IRFBCcDlsdTBDblZsdVpReEE5R3dwLWhJT1ZLNHNNTU5XRjQ.webp" alt="Reclaimed">
+                            </span>
+                            <span class="currency-name">Reclaimed</span>
+                            <span class="currency-count" id="dash-rec">0</span>
+                        </div>
+                        <div class="currency-item">
+                            <span class="currency-icon ref">
+                                <img src="https://stntrading.eu/img/ILIsUnuALeEj1hpA9H5Nn4efBlrUSoHfq4onvg3s040/aHR0cHM6Ly9zdGVhbWNvbW11bml0eS1hLmFrYW1haWhkLm5ldC9lY29ub215L2ltYWdlL2ZXRmM4MmpzMGZtb1JBUC1xT0lQdTVUSFNXcWZTbVRFTExxY1V5d0draWpWalpVTFVyc20xai05eGdFYlpRc1VZaFRraHpKV2hzTzFNdjZOR3VjRjFZZ3p0OFpRaWpKdWtGTWlNcmJoWURFd0kxeVJWS05mRDZ4b3JRM3FXM0pyNjU0NkROUHVvdTlJT1ZLNHA0a1dKYUE.webp" alt="Refined">
+                            </span>
+                            <span class="currency-name">Refined</span>
+                            <span class="currency-count" id="dash-ref">0</span>
+                        </div>
+                        <div class="currency-item">
+                            <span class="currency-icon key">
+                                <img src="https://wiki.teamfortress.com/w/images/8/83/Backpack_Mann_Co._Supply_Crate_Key.png" alt="Key">
+                            </span>
+                            <span class="currency-name">Keys</span>
+                            <span class="currency-count" id="dash-keys">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tarjeta de Proyectos Activos -->
+                <div class="summary-card projects-card">
+                    <div class="card-header">
+                        <h3>🔨 Proyectos Activos</h3>
+                    </div>
+                    <div class="projects-summary">
+                        <div class="project-stat">
+                            <span class="project-count" id="dash-specialized">0</span>
+                            <span class="project-label">Specialized</span>
+                        </div>
+                        <div class="project-stat">
+                            <span class="project-count" id="dash-professional">0</span>
+                            <span class="project-label">Professional</span>
+                        </div>
+                        <div class="project-stat ready">
+                            <span class="project-count" id="dash-ready">0</span>
+                            <span class="project-label">Listos</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grid de Robot Parts -->
+            <div class="section-header">
+                <h2>🤖 Piezas de Robot</h2>
+            </div>
+            <div class="robot-parts-grid" id="dashboardPartsGrid">
+                <!-- Se genera dinámicamente -->
+            </div>
+        </section>
+
+        <!-- ========== TAB: MOCHILA ========== -->
+        <section id="backpack" class="tab-content">
+            <div class="section-header">
+                <h2>🎒 Gestión de Stock</h2>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">Todos</button>
+                    <button class="filter-btn" data-filter="real-money">Dinero Real</button>
+                    <button class="filter-btn" data-filter="parts">Robot Parts</button>
+                    <button class="filter-btn" data-filter="currency">Currency</button>
+                    <button class="filter-btn" data-filter="kits">Kits</button>
+                </div>
+            </div>
+
+            <!-- Economía Real Section -->
+            <div class="backpack-section real-economy-section" data-category="real-money">
+                <h3 class="section-subtitle">💵 Economía Real</h3>
+                
+                <!-- Configuración de Moneda -->
+                <div class="economy-config-card">
+                    <div class="config-header">
+                        <span class="config-icon">🌍</span>
+                        <h4>Configuración de Moneda</h4>
+                    </div>
+                    <div class="config-body">
+                        <div class="config-row">
+                            <label for="localCurrencySelect">Tu moneda local:</label>
+                            <select id="localCurrencySelect" onchange="updateLocalCurrency()">
+                                <!-- Se genera dinámicamente -->
+                            </select>
+                        </div>
+                        <div class="config-row">
+                            <label for="localToUsdRate">Tasa de cambio (1 <span id="localCurrencyCode">MXN</span> = USD):</label>
+                            <input type="number" id="localToUsdRate" value="0.049" step="0.0001" min="0" onchange="updateExchangeRate()">
+                            <span class="rate-hint">Consulta en Google: "1 MXN to USD"</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cartera de Steam -->
+                <div class="economy-card steam-wallet-card">
+                    <div class="card-header">
+                        <img src="https://store.steampowered.com/favicon.ico" alt="Steam" class="card-icon-img">
+                        <h4>Cartera de Steam</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="wallet-input-group">
+                            <label>Saldo actual (<span class="local-currency-symbol">$</span><span class="local-currency-code">MXN</span>):</label>
+                            <input type="number" id="steamWalletInput" value="0" step="0.01" min="0" onchange="updateSteamWallet()">
+                        </div>
+                        <div class="wallet-conversions">
+                            <div class="conversion-display">
+                                <span class="conv-label">En USD:</span>
+                                <span class="conv-value" id="walletInUsd">$0.00 USD</span>
+                            </div>
+                            <div class="conversion-display">
+                                <span class="conv-label">En Ref (aprox):</span>
+                                <span class="conv-value" id="walletInRef">0 Ref</span>
+                            </div>
+                            <div class="conversion-display">
+                                <span class="conv-label">Equivale a Keys:</span>
+                                <span class="conv-value" id="walletInKeys">0 Keys</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mann Co. Store (Solo Venta) -->
+                <div class="economy-card mannco-store-card">
+                    <div class="card-header">
+                        <span class="card-icon">🏪</span>
+                        <h4>Mann Co. Store</h4>
+                        <span class="price-badge stable">Solo Venta</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="mannco-note">
+                            <span>⚠️</span>
+                            <p>Mann Co. Store solo <strong>vende</strong> Keys. No compra Keys de jugadores.</p>
+                        </div>
+                        <div class="key-input-group">
+                            <label>Precio de Compra (<span class="local-currency-code">MXN</span>):</label>
+                            <input type="number" id="mannCoKeyPrice" value="47.49" step="0.01" min="0" onchange="updateAllKeyPrices()">
+                        </div>
+                        <div class="key-conversions">
+                            <div class="conversion-display">
+                                <span class="conv-label">En USD:</span>
+                                <span class="conv-value" id="mannCoKeyUsd">$0.00</span>
+                            </div>
+                            <div class="conversion-display">
+                                <span class="conv-label">Equivale a:</span>
+                                <span class="conv-value" id="mannCoKeyRef">0 Ref</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tiendas de Comunidad -->
+                <div class="community-stores-section">
+                    <h3 class="section-subtitle">👥 Tiendas de Comunidad - Precios de Keys</h3>
+                    <p class="stores-hint">Ingresa los precios actuales de compra/venta de Keys en cada tienda</p>
+                    
+                    <div class="stores-key-grid" id="storesKeyGrid">
+                        <!-- Scrap.TF -->
+                        <div class="store-key-card" data-store="scrap_tf">
+                            <div class="store-key-header">
+                                <span class="store-emoji">🤖</span>
+                                <div class="store-key-info">
+                                    <h4>Scrap.TF</h4>
+                                    <span class="store-currency-badge">Ref</span>
+                                </div>
+                            </div>
+                            <div class="store-key-prices">
+                                <div class="price-row buy">
+                                    <label>Comprar Key:</label>
+                                    <input type="number" id="scrap_tf_buy" value="56" step="0.5" min="0" onchange="updateStoreKeyPrice('scrap_tf', 'buy', this.value)">
+                                    <span class="currency-label">Ref</span>
+                                </div>
+                                <div class="price-row sell">
+                                    <label>Vender Key:</label>
+                                    <input type="number" id="scrap_tf_sell" value="54" step="0.5" min="0" onchange="updateStoreKeyPrice('scrap_tf', 'sell', this.value)">
+                                    <span class="currency-label">Ref</span>
+                                </div>
+                            </div>
+                            <div class="store-key-converted" id="scrap_tf_converted">
+                                <!-- Conversiones -->
+                            </div>
+                        </div>
+
+                        <!-- Backpack.TF -->
+                        <div class="store-key-card" data-store="backpack_tf">
+                            <div class="store-key-header">
+                                <span class="store-emoji">👥</span>
+                                <div class="store-key-info">
+                                    <h4>Backpack.TF</h4>
+                                    <span class="store-currency-badge">Ref</span>
+                                </div>
+                            </div>
+                            <div class="store-key-prices">
+                                <div class="price-row buy">
+                                    <label>Comprar Key:</label>
+                                    <input type="number" id="backpack_tf_buy" value="56.5" step="0.5" min="0" onchange="updateStoreKeyPrice('backpack_tf', 'buy', this.value)">
+                                    <span class="currency-label">Ref</span>
+                                </div>
+                                <div class="price-row sell">
+                                    <label>Vender Key:</label>
+                                    <input type="number" id="backpack_tf_sell" value="55" step="0.5" min="0" onchange="updateStoreKeyPrice('backpack_tf', 'sell', this.value)">
+                                    <span class="currency-label">Ref</span>
+                                </div>
+                            </div>
+                            <div class="store-key-converted" id="backpack_tf_converted">
+                                <!-- Conversiones -->
+                            </div>
+                        </div>
+
+                        <!-- STN Trading -->
+                        <div class="store-key-card" data-store="stn_trading">
+                            <div class="store-key-header">
+                                <span class="store-emoji">🤖</span>
+                                <div class="store-key-info">
+                                    <h4>STN Trading</h4>
+                                    <span class="store-currency-badge">Ref</span>
+                                </div>
+                            </div>
+                            <div class="store-key-prices">
+                                <div class="price-row buy">
+                                    <label>Comprar Key:</label>
+                                    <input type="number" id="stn_trading_buy" value="57" step="0.5" min="0" onchange="updateStoreKeyPrice('stn_trading', 'buy', this.value)">
+                                    <span class="currency-label">Ref</span>
+                                </div>
+                                <div class="price-row sell">
+                                    <label>Vender Key:</label>
+                                    <input type="number" id="stn_trading_sell" value="54.5" step="0.5" min="0" onchange="updateStoreKeyPrice('stn_trading', 'sell', this.value)">
+                                    <span class="currency-label">Ref</span>
+                                </div>
+                            </div>
+                            <div class="store-key-converted" id="stn_trading_converted">
+                                <!-- Conversiones -->
+                            </div>
+                        </div>
+
+                        <!-- TradeIT.GG -->
+                        <div class="store-key-card" data-store="tradeit_gg">
+                            <div class="store-key-header">
+                                <span class="store-emoji">🤖</span>
+                                <div class="store-key-info">
+                                    <h4>TradeIT.GG</h4>
+                                    <span class="store-currency-badge usd">USD</span>
+                                </div>
+                            </div>
+                            <div class="store-key-prices">
+                                <div class="price-row buy">
+                                    <label>Comprar Key:</label>
+                                    <input type="number" id="tradeit_gg_buy" value="1.89" step="0.01" min="0" onchange="updateStoreKeyPrice('tradeit_gg', 'buy', this.value)">
+                                    <span class="currency-label">USD</span>
+                                </div>
+                                <div class="price-row sell">
+                                    <label>Vender Key:</label>
+                                    <input type="number" id="tradeit_gg_sell" value="1.75" step="0.01" min="0" onchange="updateStoreKeyPrice('tradeit_gg', 'sell', this.value)">
+                                    <span class="currency-label">USD</span>
+                                </div>
+                            </div>
+                            <div class="store-key-converted" id="tradeit_gg_converted">
+                                <!-- Conversiones -->
+                            </div>
+                        </div>
+
+                        <!-- Steam Market -->
+                        <div class="store-key-card steam-market" data-store="steam_market">
+                            <div class="store-key-header">
+                                <span class="store-emoji">🎮</span>
+                                <div class="store-key-info">
+                                    <h4>Steam Market</h4>
+                                    <span class="store-currency-badge local"><span class="local-currency-code">MXN</span></span>
+                                </div>
+                            </div>
+                            <div class="store-key-prices">
+                                <div class="price-row buy">
+                                    <label>Comprar Key:</label>
+                                    <input type="number" id="steam_market_buy" value="49.99" step="0.01" min="0" onchange="updateStoreKeyPrice('steam_market', 'buy', this.value)">
+                                    <span class="currency-label local-currency-code">MXN</span>
+                                </div>
+                                <div class="price-row sell disabled">
+                                    <label>Vender Key:</label>
+                                    <input type="number" disabled value="—" class="disabled-input">
+                                    <span class="currency-label">N/A</span>
+                                </div>
+                            </div>
+                            <div class="store-key-converted" id="steam_market_converted">
+                                <!-- Conversiones -->
+                            </div>
+                            <p class="store-note">⚠️ Steam Market cobra 15% de comisión al vender</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mejor Opción para Comprar/Vender -->
+                <div class="best-option-section">
+                    <div class="best-option-card buy">
+                        <div class="card-header">
+                            <span class="card-icon">🛒</span>
+                            <h4>Mejor Opción para COMPRAR Keys</h4>
+                        </div>
+                        <div class="card-body" id="bestBuyOption">
+                            <!-- Se genera dinámicamente -->
+                        </div>
+                    </div>
+                    
+                    <div class="best-option-card sell">
+                        <div class="card-header">
+                            <span class="card-icon">💰</span>
+                            <h4>Mejor Opción para VENDER Keys</h4>
+                        </div>
+                        <div class="card-body" id="bestSellOption">
+                            <!-- Se genera dinámicamente -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Análisis de Rentabilidad -->
+                <div class="economy-card profitability-card">
+                    <div class="card-header">
+                        <span class="card-icon">📊</span>
+                        <h4>Análisis de Rentabilidad</h4>
+                    </div>
+                    <div class="card-body" id="profitabilityAnalysis">
+                        <!-- Se genera dinámicamente -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Currency Section -->
+            <div class="backpack-section" data-category="currency">
+                <h3 class="section-subtitle">💰 Currency (Metal & Keys)</h3>
+                <div class="stock-grid currency-grid" id="currencyGrid">
+                    <!-- Se genera dinámicamente -->
+                </div>
+            </div>
+
+            <!-- Robot Parts Section -->
+            <div class="backpack-section" data-category="parts">
+                <h3 class="section-subtitle">🤖 Robot Parts</h3>
+                <div class="stock-grid parts-grid" id="partsGrid">
+                    <!-- Se genera dinámicamente -->
+                </div>
+            </div>
+
+            <!-- Killstreak Kits Completados Section -->
+            <div class="backpack-section completed-kits-section" data-category="kits">
+                <h3 class="section-subtitle">⚔️ Killstreak Kits (Listos para usar/vender)</h3>
+                <p class="kits-hint">Kits fabricados listos para aplicar a armas o vender en el mercado</p>
+                
+                <!-- Basic Killstreak Kits -->
+                <div class="kits-category basic-kits">
+                    <div class="kits-category-header">
+                        <img src="https://wiki.teamfortress.com/w/images/e/e4/Item_icon_Killstreak_Kit.png" alt="Basic" class="kit-type-icon">
+                        <div class="kits-category-info">
+                            <h4>Basic Killstreak Weapon Kits</h4>
+                            <span class="kits-count" id="basicKitsCount">0 kits</span>
+                        </div>
+                        <button class="btn-add-kit" onclick="openAddBasicKitModal()">+ Añadir</button>
+                    </div>
+                    <div class="kits-list" id="basicKitsList">
+                        <div class="empty-kits">
+                            <span>📭</span>
+                            <p>No hay Basic Kits en inventario</p>
+                            <p class="hint">Se obtienen jugando MvM en Two Cities</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Specialized Killstreak Kits -->
+                <div class="kits-category specialized-kits">
+                    <div class="kits-category-header">
+                        <img src="https://wiki.teamfortress.com/w/images/2/2e/Item_icon_Specialized_Killstreak_Kit.png" alt="Specialized" class="kit-type-icon">
+                        <div class="kits-category-info">
+                            <h4>Specialized Killstreak Weapon Kits</h4>
+                            <span class="kits-count" id="specializedKitsCount">0 kits</span>
+                        </div>
+                        <button class="btn-add-kit" onclick="openAddSpecializedKitModal()">+ Añadir</button>
+                    </div>
+                    <div class="kits-list" id="specializedKitsList">
+                        <div class="empty-kits">
+                            <span>📭</span>
+                            <p>No hay Specialized Kits fabricados</p>
+                            <p class="hint">Crea un fabricador Specialized en La Forja</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Professional Killstreak Kits -->
+                <div class="kits-category professional-kits">
+                    <div class="kits-category-header">
+                        <img src="https://wiki.teamfortress.com/w/images/f/f3/Item_icon_Professional_Killstreak_Kit.png" alt="Professional" class="kit-type-icon">
+                        <div class="kits-category-info">
+                            <h4>Professional Killstreak Weapon Kits</h4>
+                            <span class="kits-count" id="professionalKitsCount">0 kits</span>
+                        </div>
+                        <button class="btn-add-kit" onclick="openAddProfessionalKitModal()">+ Añadir</button>
+                    </div>
+                    <div class="kits-list" id="professionalKitsList">
+                        <div class="empty-kits">
+                            <span>📭</span>
+                            <p>No hay Professional Kits fabricados</p>
+                            <p class="hint">Crea un fabricador Professional en La Forja</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== TAB: LA FORJA ========== -->
+        <section id="forge" class="tab-content">
+            <div class="forge-layout">
+                <!-- Panel de Creación -->
+                <div class="forge-panel create-panel">
+                    <div class="panel-header">
+                        <h2>🔥 Crear Nuevo Proyecto</h2>
+                    </div>
+                    <form id="projectForm" class="project-form" novalidate>
+                        <div class="form-group">
+                            <label for="kitType">Tipo de Kit</label>
+                            <select id="kitType" required>
+                                <option value="">Seleccionar...</option>
+                                <option value="specialized">Specialized Killstreak</option>
+                                <option value="professional">Professional Killstreak</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="weaponName">Arma</label>
+                            <input type="text" id="weaponName" placeholder="Ej: Scattergun, Minigun..." required>
+                        </div>
+
+                        <div class="form-group" id="weaponCostGroup" style="display: none;">
+                            <label for="weaponCost">💰 Costo del Arma (Refs)</label>
+                            <input type="number" id="weaponCost" placeholder="Ej: 0.05" step="0.01" min="0" value="0">
+                            <span class="input-hint">Precio pagado por el arma donde aplicarás el kit (0 si ya la tienes)</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="sheenSelect">Sheen (Brillo)</label>
+                            <select id="sheenSelect" required>
+                                <option value="">Seleccionar...</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group" id="killstreakerGroup" style="display: none;">
+                            <label for="killstreakerSelect">Killstreaker (Efecto)</label>
+                            <select id="killstreakerSelect">
+                                <option value="">Seleccionar...</option>
+                            </select>
+                        </div>
+
+                        <!-- Campos para Specialized Kit -->
+                        <div class="form-group" id="basicKitGroup" style="display: none;">
+                            <label>🔫 Basic Killstreak Weapon (Ingrediente)</label>
+                            <p class="input-hint">Un Specialized requiere 1 arma con Basic Killstreak Kit aplicado</p>
+                            
+                            <div class="weapon-tabs-container">
+                                <div class="weapon-tabs-header">
+                                    <button type="button" class="weapon-tab active" data-tab="basic-backpack">
+                                        <span class="tab-icon">📦</span> En Mochila
+                                    </button>
+                                    <button type="button" class="weapon-tab" data-tab="basic-manual">
+                                        <span class="tab-icon">✏️</span> Entrada Manual
+                                    </button>
+                                </div>
+                                
+                                <div class="weapon-tab-content active" id="basic-backpack">
+                                    <div class="available-kits-list" id="availableBasicKits">
+                                        <!-- Se genera dinámicamente -->
+                                    </div>
+                                </div>
+                                
+                                <div class="weapon-tab-content" id="basic-manual">
+                                    <div class="manual-weapon-input">
+                                        <div class="form-row">
+                                            <div class="form-field">
+                                                <label for="basicWeaponName">Nombre del Arma</label>
+                                                <input type="text" id="basicWeaponName" placeholder="Ej: Rocket Launcher">
+                                            </div>
+                                            <div class="form-field cost-field">
+                                                <label for="basicWeaponCost">Costo Total (Ref)</label>
+                                                <input type="number" id="basicWeaponCost" placeholder="0" step="0.5" min="0" value="0">
+                                                <span class="input-hint">Arma + Kit Basic aplicado</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group checkbox-group">
+                                            <label class="checkbox-label">
+                                                <input type="checkbox" id="hasBasicWeapon">
+                                                <span class="checkmark"></span>
+                                                Ya tengo esta arma con Basic KS
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="selected-weapon-display" id="selectedBasicWeapon" style="display: none;">
+                                <span class="selected-label">✅ Seleccionado:</span>
+                                <span class="selected-weapon-name" id="selectedBasicWeaponName"></span>
+                                <button type="button" class="btn-clear-selection" onclick="clearBasicWeaponSelection()">✕</button>
+                            </div>
+                        </div>
+
+                        <!-- Campos para Professional Kit -->
+                        <div class="form-group" id="specWeaponsGroup" style="display: none;">
+                            <label>⚔️ Specialized KS Weapons (Ingredientes)</label>
+                            <p class="input-hint">Un Professional requiere <strong>2 armas con Specialized KS Kit aplicado</strong></p>
+                            
+                            <div class="weapon-tabs-container">
+                                <div class="weapon-tabs-header">
+                                    <button type="button" class="weapon-tab active" data-tab="spec-backpack">
+                                        <span class="tab-icon">📦</span> En Mochila
+                                    </button>
+                                    <button type="button" class="weapon-tab" data-tab="spec-manual">
+                                        <span class="tab-icon">✏️</span> Entrada Manual
+                                    </button>
+                                </div>
+                                
+                                <div class="weapon-tab-content active" id="spec-backpack">
+                                    <div class="available-kits-list" id="availableSpecializedKits">
+                                        <!-- Se genera dinámicamente -->
+                                    </div>
+                                </div>
+                                
+                                <div class="weapon-tab-content" id="spec-manual">
+                                    <div class="spec-weapons-manual">
+                                        <!-- Specialized Weapon 1 -->
+                                        <div class="spec-weapon-entry">
+                                            <div class="spec-weapon-header">
+                                                <span class="spec-weapon-number">1️⃣</span>
+                                                <span class="spec-weapon-label">Primera Specialized KS Weapon</span>
+                                            </div>
+                                            <div class="spec-weapon-fields">
+                                                <div class="form-row">
+                                                    <div class="form-field">
+                                                        <input type="text" id="specWeapon1Name" placeholder="Nombre del arma">
+                                                    </div>
+                                                    <div class="form-field cost-field">
+                                                        <label>Costo:</label>
+                                                        <input type="number" id="specWeapon1Cost" placeholder="Ref" step="0.5" min="0" value="0">
+                                                    </div>
+                                                </div>
+                                                <label class="checkbox-label small">
+                                                    <input type="checkbox" id="specWeapon1Has">
+                                                    <span class="checkmark"></span>
+                                                    Ya la tengo
+                                                </label>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Specialized Weapon 2 -->
+                                        <div class="spec-weapon-entry">
+                                            <div class="spec-weapon-header">
+                                                <span class="spec-weapon-number">2️⃣</span>
+                                                <span class="spec-weapon-label">Segunda Specialized KS Weapon</span>
+                                            </div>
+                                            <div class="spec-weapon-fields">
+                                                <div class="form-row">
+                                                    <div class="form-field">
+                                                        <input type="text" id="specWeapon2Name" placeholder="Nombre del arma">
+                                                    </div>
+                                                    <div class="form-field cost-field">
+                                                        <label>Costo:</label>
+                                                        <input type="number" id="specWeapon2Cost" placeholder="Ref" step="0.5" min="0" value="0">
+                                                    </div>
+                                                </div>
+                                                <label class="checkbox-label small">
+                                                    <input type="checkbox" id="specWeapon2Has">
+                                                    <span class="checkmark"></span>
+                                                    Ya la tengo
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="selected-weapons-display" id="selectedSpecWeapons">
+                                <div class="selected-weapon-slot" id="selectedSpecWeapon1" style="display: none;">
+                                    <span class="slot-number">1️⃣</span>
+                                    <span class="selected-weapon-name" id="selectedSpecWeapon1Name"></span>
+                                    <button type="button" class="btn-clear-selection" onclick="clearSpecWeaponSelection(1)">✕</button>
+                                </div>
+                                <div class="selected-weapon-slot" id="selectedSpecWeapon2" style="display: none;">
+                                    <span class="slot-number">2️⃣</span>
+                                    <span class="selected-weapon-name" id="selectedSpecWeapon2Name"></span>
+                                    <button type="button" class="btn-clear-selection" onclick="clearSpecWeaponSelection(2)">✕</button>
+                                </div>
+                                <div class="spec-weapons-summary">
+                                    <span class="summary-value" id="specWeaponsSummary">0/2 Weapons seleccionadas</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Contenedor para inputs de piezas requeridas -->
+                        <div class="form-group" id="partsRequirementsGroup" style="display: none;">
+                            <label>🤖 Piezas Requeridas por el Fabricador</label>
+                            <p class="input-hint">Ingresa la cantidad exacta de cada pieza que solicita tu fabricador</p>
+                            <div class="parts-requirements-container" id="partsRequirementsInputs">
+                                <!-- Se genera dinámicamente por generatePartsRequirementsInputs() -->
+                                <p class="select-kit-msg">Selecciona un tipo de kit primero</p>
+                            </div>
+                        </div>
+
+                        <div class="form-info">
+                            <div class="info-box" id="requirementsInfo">
+                                <h4>📋 Información del Kit</h4>
+                                <p id="reqText">Selecciona un tipo de kit para ver los requisitos.</p>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn-forge">
+                            <span>⚒️</span>
+                            Crear Proyecto
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Panel de Proyectos Activos -->
+                <div class="forge-panel projects-panel">
+                    <div class="panel-header">
+                        <h2>📁 Proyectos Activos</h2>
+                        <span class="project-counter" id="projectCounter">0</span>
+                    </div>
+                    <div class="projects-list" id="projectsList">
+                        <div class="empty-state">
+                            <span class="empty-icon">📭</span>
+                            <p>No hay proyectos activos</p>
+                            <p class="empty-hint">Crea tu primer Killstreak Kit</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ========== GUÍA DE POPULARIDAD CON PESTAÑAS ========== -->
+            <div class="popularity-guide-section">
+                <div class="section-header">
+                    <h2>🌈 Guía de Popularidad de Efectos</h2>
+                    <p class="section-subtitle">Conoce qué Sheens y Killstreakers son más demandados por la comunidad</p>
+                </div>
+
+                <!-- Pestañas de navegación -->
+                <div class="popularity-tabs-container">
+                    <div class="popularity-tabs-nav">
+                        <button class="popularity-tab-btn active" data-tab="sheens" onclick="switchPopularityGuideTab('sheens')">
+                            <span class="tab-icon">✨</span>
+                            <span class="tab-label">Sheens</span>
+                            <span class="tab-badge">Specialized</span>
+                        </button>
+                        <button class="popularity-tab-btn" data-tab="killstreakers" onclick="switchPopularityGuideTab('killstreakers')">
+                            <span class="tab-icon">💀</span>
+                            <span class="tab-label">Killstreakers</span>
+                            <span class="tab-badge pro">Professional</span>
+                        </button>
+                        <button class="popularity-tab-btn" data-tab="mykits" onclick="switchPopularityGuideTab('mykits')">
+                            <span class="tab-icon">🎒</span>
+                            <span class="tab-label">Mis Kits</span>
+                            <span class="tab-badge inventory" id="myKitsCountBadge">0</span>
+                        </button>
+                    </div>
+
+                    <!-- Contenido de Sheens -->
+                    <div class="popularity-tab-panel active" id="popularityPanel-sheens">
+                        <div class="effects-intro">
+                            <p>Los <strong>Sheens</strong> son el efecto de brillo que aparece en tu arma con cada kill. Aplican a <strong>Specialized</strong> y <strong>Professional</strong> Killstreak Kits.</p>
+                        </div>
+                        <div class="effects-grid" id="sheensPopularityGrid">
+                            <!-- Se genera dinámicamente -->
+                        </div>
+                        <div class="effects-legend">
+                            <div class="legend-row">
+                                <span class="demand-tag very-high">🔥 Muy Alta</span>
+                                <span class="legend-text">Venta rápida, precio premium</span>
+                            </div>
+                            <div class="legend-row">
+                                <span class="demand-tag high">⬆️ Alta</span>
+                                <span class="legend-text">Buena demanda, buen precio</span>
+                            </div>
+                            <div class="legend-row">
+                                <span class="demand-tag medium">➡️ Media</span>
+                                <span class="legend-text">Demanda estable, precio base</span>
+                            </div>
+                            <div class="legend-row">
+                                <span class="demand-tag low">⬇️ Baja</span>
+                                <span class="legend-text">Difícil vender, precio reducido</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contenido de Killstreakers -->
+                    <div class="popularity-tab-panel" id="popularityPanel-killstreakers">
+                        <div class="effects-intro">
+                            <p>Los <strong>Killstreakers</strong> son efectos de ojos que aparecen al acumular kills. Son <strong>exclusivos de Professional</strong> Killstreak Kits y determinan gran parte del valor.</p>
+                        </div>
+                        <div class="effects-grid" id="killstreakersPopularityGrid">
+                            <!-- Se genera dinámicamente -->
+                        </div>
+                        <div class="effects-legend">
+                            <div class="legend-row">
+                                <span class="demand-tag very-high">🔥 Muy Alta</span>
+                                <span class="legend-text">Venta instantánea, precio GOD tier</span>
+                            </div>
+                            <div class="legend-row">
+                                <span class="demand-tag high">⬆️ Alta</span>
+                                <span class="legend-text">Muy buscado, venta rápida</span>
+                            </div>
+                            <div class="legend-row">
+                                <span class="demand-tag medium">➡️ Media</span>
+                                <span class="legend-text">Demanda normal, precio estable</span>
+                            </div>
+                            <div class="legend-row">
+                                <span class="demand-tag low">⬇️ Baja</span>
+                                <span class="legend-text">Nicho, difícil encontrar comprador</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contenido de Mis Kits -->
+                    <div class="popularity-tab-panel" id="popularityPanel-mykits">
+                        <div class="mykits-container">
+                            <!-- Filtros -->
+                            <div class="mykits-filters">
+                                <div class="filter-group">
+                                    <label>Tipo de Kit:</label>
+                                    <div class="filter-buttons kit-type-filter">
+                                        <button class="filter-btn active" data-filter="all">Todos</button>
+                                        <button class="filter-btn basic" data-filter="basic">Basic</button>
+                                        <button class="filter-btn specialized" data-filter="specialized">Specialized</button>
+                                        <button class="filter-btn professional" data-filter="professional">Professional</button>
+                                    </div>
+                                </div>
+                                <div class="filter-group">
+                                    <label>Clase:</label>
+                                    <div class="filter-buttons class-filter" id="classFilterButtons">
+                                        <button class="filter-btn class-btn active" data-class="all" title="Todas las clases">
+                                            <span>Todas</span>
+                                        </button>
+                                        <!-- Los botones de clase se generan dinámicamente -->
+                                    </div>
+                                </div>
+                                <div class="filter-group">
+                                    <label>Estado:</label>
+                                    <div class="filter-buttons imbued-filter">
+                                        <button class="filter-btn active" data-imbued="all">Todos</button>
+                                        <button class="filter-btn" data-imbued="false">Sin Imbuir</button>
+                                        <button class="filter-btn imbued" data-imbued="true">Imbuidos</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Grid de Kits -->
+                            <div class="mykits-grid" id="myKitsGrid">
+                                <!-- Se genera dinámicamente -->
+                            </div>
+
+                            <!-- Estado vacío -->
+                            <div class="mykits-empty" id="myKitsEmpty" style="display: none;">
+                                <div class="empty-icon">📦</div>
+                                <h3>No tienes kits completados</h3>
+                                <p>Los kits que crees en La Forja aparecerán aquí con recomendaciones de venta.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ========== SISTEMA DE VALORACIÓN DE COMBINACIONES ========== -->
+            <div class="valuation-section">
+                <div class="valuation-header">
+                    <h2>📊 Sistema de Valoración de Combinaciones</h2>
+                    <p class="valuation-subtitle">Basado en macrodatos de la comunidad TF2 • Demanda y precios reales</p>
+                </div>
+
+                <!-- Pestañas de Clases para Top/Bottom -->
+                <div class="class-tabs-container">
+                    <div class="class-tabs" id="valuationClassTabs">
+                        <button class="class-tab active" data-class="all" onclick="switchValuationClass('all')">
+                            <span class="tab-icon">🎮</span>
+                            <span class="tab-name">Todas</span>
+                        </button>
+                        <!-- Se generan dinámicamente las 9 clases -->
+                    </div>
+                </div>
+
+                <!-- Top Combinaciones -->
+                <div class="valuation-grid">
+                    <!-- Top 5 Mejores -->
+                    <div class="valuation-card top-combos">
+                        <div class="card-header">
+                            <h3>🏆 Top Combinaciones</h3>
+                            <span class="card-badge">Más Rentables</span>
+                        </div>
+                        <div class="top-combos-list" id="topCombosList">
+                            <!-- Se genera dinámicamente -->
+                        </div>
+                    </div>
+
+                    <!-- Peores Combinaciones -->
+                    <div class="valuation-card bottom-combos">
+                        <div class="card-header">
+                            <h3>⚠️ Combinaciones a Evitar</h3>
+                            <span class="card-badge warning">Baja Demanda</span>
+                        </div>
+                        <div class="bottom-combos-list" id="bottomCombosList">
+                            <!-- Se genera dinámicamente -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tabla Completa de Combinaciones -->
+                <div class="valuation-card full-combos">
+                    <!-- Sub-pestañas para la Matriz -->
+                    <div class="matrix-tabs">
+                        <button class="matrix-tab active" data-tab="matrix" onclick="switchMatrixTab('matrix')">
+                            <span>📋</span> Matriz
+                        </button>
+                        <button class="matrix-tab" data-tab="weapons" onclick="switchMatrixTab('weapons')">
+                            <span>🔫</span> Armas
+                        </button>
+                        <button class="matrix-tab" data-tab="combined" onclick="switchMatrixTab('combined')">
+                            <span>💰</span> Rentabilidad
+                        </button>
+                        <button class="matrix-tab" data-tab="favorites" onclick="switchMatrixTab('favorites')">
+                            <span>❤️</span> Favoritos
+                        </button>
+                    </div>
+                    
+                    <!-- Panel: Matriz de Combinaciones -->
+                    <div class="matrix-tab-panel active" id="matrixPanel-matrix">
+                        <div class="card-header">
+                            <h3>📋 Matriz de Combinaciones Professional</h3>
+                            <div class="filter-controls">
+                                <button class="filter-btn active" data-filter="all" onclick="filterCombos('all')">Todas</button>
+                                <button class="filter-btn" data-filter="S" onclick="filterCombos('S')">👑 S Tier</button>
+                                <button class="filter-btn" data-filter="A" onclick="filterCombos('A')">🔥 A Tier</button>
+                                <button class="filter-btn" data-filter="B" onclick="filterCombos('B')">⭐ B Tier</button>
+                                <button class="filter-btn" data-filter="C" onclick="filterCombos('C')">✨ C Tier</button>
+                                <button class="filter-btn" data-filter="D" onclick="filterCombos('D')">● D Tier</button>
+                            </div>
+                        </div>
+                        <div class="combo-matrix-container">
+                            <table class="combo-matrix" id="comboMatrix">
+                                <thead>
+                                    <tr>
+                                        <th class="corner-cell">Sheen ↓ / Effect →</th>
+                                        <!-- Se genera dinámicamente -->
+                                    </tr>
+                                </thead>
+                                <tbody id="comboMatrixBody">
+                                    <!-- Se genera dinámicamente -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Panel: Armas Favoritas por Clase -->
+                    <div class="matrix-tab-panel" id="matrixPanel-weapons">
+                        <div class="card-header">
+                            <h3>🔫 Armas Favoritas por Clase</h3>
+                            <p class="panel-subtitle">Las armas más buscadas para killstreak kits de cada clase</p>
+                        </div>
+                        <div class="weapons-grid" id="weaponsDemandGrid">
+                            <!-- Se genera dinámicamente -->
+                        </div>
+                    </div>
+
+                    <!-- Panel: Análisis de Rentabilidad (Fusión) -->
+                    <div class="matrix-tab-panel" id="matrixPanel-combined">
+                        <div class="card-header">
+                            <h3>💰 Análisis de Rentabilidad</h3>
+                            <p class="panel-subtitle">Calcula ROI, costos de fabricación y estrategias de venta</p>
+                        </div>
+                        <div class="combined-analysis-container">
+                            <!-- Selectores principales -->
+                            <div class="combined-selectors">
+                                <div class="selector-group kit-type-selector">
+                                    <label>Tipo de Kit</label>
+                                    <select id="combinedKitType" onchange="updateCombinedKitType()">
+                                        <option value="">Seleccionar tipo...</option>
+                                        <option value="basic">📦 Basic Killstreak</option>
+                                        <option value="specialized">⭐ Specialized Killstreak</option>
+                                        <option value="professional">💎 Professional Killstreak</option>
+                                    </select>
+                                </div>
+                                <div class="selector-group">
+                                    <label>Clase</label>
+                                    <select id="combinedClass" onchange="updateCombinedWeapons()">
+                                        <option value="">Seleccionar clase...</option>
+                                    </select>
+                                </div>
+                                <div class="selector-group">
+                                    <label>Slot</label>
+                                    <select id="combinedSlot" onchange="updateCombinedWeapons()">
+                                        <option value="">Cualquier slot</option>
+                                        <option value="primary">1️⃣ Primaria</option>
+                                        <option value="secondary">2️⃣ Secundaria</option>
+                                        <option value="melee">3️⃣ Cuerpo a Cuerpo</option>
+                                    </select>
+                                </div>
+                                <div class="selector-group">
+                                    <label>Arma</label>
+                                    <select id="combinedWeapon" onchange="updateCombinedAnalysis()">
+                                        <option value="">Seleccionar arma...</option>
+                                    </select>
+                                </div>
+                                <div class="selector-group sheen-selector" id="combinedSheenGroup" style="display: none;">
+                                    <label>Sheen</label>
+                                    <select id="combinedSheen" onchange="updateCombinedAnalysis()">
+                                        <option value="">Seleccionar sheen...</option>
+                                    </select>
+                                </div>
+                                <div class="selector-group killstreaker-selector" id="combinedKillstreakerGroup" style="display: none;">
+                                    <label>Killstreaker</label>
+                                    <select id="combinedKillstreaker" onchange="updateCombinedAnalysis()">
+                                        <option value="">Seleccionar efecto...</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <!-- Info del tipo de kit -->
+                            <div class="kit-type-info" id="kitTypeInfo">
+                                <div class="kit-type-badge basic" style="display: none;">
+                                    <span class="badge-icon">📦</span>
+                                    <span class="badge-text">Basic: Se obtiene GRATIS al completar Two Cities (4 mapas)</span>
+                                </div>
+                                <div class="kit-type-badge specialized" style="display: none;">
+                                    <span class="badge-icon">⭐</span>
+                                    <span class="badge-text">Specialized: Requiere fabricador + 29 partes + Basic Kit</span>
+                                </div>
+                                <div class="kit-type-badge professional" style="display: none;">
+                                    <span class="badge-icon">💎</span>
+                                    <span class="badge-text">Professional: Requiere fabricador + 25 partes + 2 Specialized Weapons</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Resultado del análisis -->
+                            <div class="combined-result" id="combinedAnalysisResult">
+                                <div class="analysis-placeholder">
+                                    <span class="placeholder-icon">💰</span>
+                                    <p>Selecciona tipo de kit, clase y arma para calcular la rentabilidad</p>
+                                    <p class="placeholder-hint">Incluye ROI, costos de materiales y estrategias de venta en 3 divisas</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Panel: Mis Favoritos Personales -->
+                    <div class="matrix-tab-panel" id="matrixPanel-favorites">
+                        <div class="card-header">
+                            <h3>❤️ Mis Favoritos Personales</h3>
+                            <p class="panel-subtitle">Combinaciones para tus propias armas - ¡No las vendas!</p>
+                        </div>
+                        
+                        <div class="favorites-container">
+                            <div class="favorites-tip">
+                                <span class="tip-icon">💡</span>
+                                <p>¿Tienes una combinación de sheen + efecto que te gusta especialmente? 
+                                   Guárdala aquí para no venderla por error. ¡Son para TUS armas!</p>
+                            </div>
+
+                            <!-- Formulario para agregar favorito -->
+                            <div class="add-favorite-form">
+                                <h4>➕ Agregar Favorito</h4>
+                                <div class="fav-form-grid">
+                                    <div class="fav-field">
+                                        <label>Tipo de Kit</label>
+                                        <select id="favKitType" onchange="updateFavoriteFields()">
+                                            <option value="">Seleccionar...</option>
+                                            <option value="specialized">⭐ Specialized</option>
+                                            <option value="professional">💎 Professional</option>
+                                        </select>
+                                    </div>
+                                    <div class="fav-field">
+                                        <label>Clase</label>
+                                        <select id="favClass" onchange="updateFavoriteWeapons()">
+                                            <option value="">Seleccionar...</option>
+                                        </select>
+                                    </div>
+                                    <div class="fav-field">
+                                        <label>Slot</label>
+                                        <select id="favSlot" onchange="updateFavoriteWeapons()">
+                                            <option value="">Seleccionar...</option>
+                                            <option value="primary">1️⃣ Primaria</option>
+                                            <option value="secondary">2️⃣ Secundaria</option>
+                                            <option value="melee">3️⃣ Cuerpo a Cuerpo</option>
+                                        </select>
+                                    </div>
+                                    <div class="fav-field">
+                                        <label>Arma</label>
+                                        <select id="favWeapon">
+                                            <option value="">Seleccionar...</option>
+                                        </select>
+                                    </div>
+                                    <div class="fav-field">
+                                        <label>Sheen</label>
+                                        <select id="favSheen">
+                                            <option value="">Seleccionar...</option>
+                                        </select>
+                                    </div>
+                                    <div class="fav-field" id="favKillstreakerGroup">
+                                        <label>Killstreaker</label>
+                                        <select id="favKillstreaker">
+                                            <option value="">Ninguno</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <!-- Preview del costo estimado -->
+                                <div class="favorite-cost-preview" id="favoriteCostPreview">
+                                    <span class="cost-label">Costo estimado para conseguirlo:</span>
+                                    <div class="cost-values">
+                                        <span class="cost-keys" id="favCostKeys">-- Keys</span>
+                                        <span class="cost-usd" id="favCostUSD">~$-- USD</span>
+                                        <span class="cost-mxn" id="favCostMXN">~$-- MXN</span>
+                                    </div>
+                                </div>
+                                
+                                <button class="btn-add-favorite" onclick="addPersonalFavorite()">
+                                    <span>💾</span> Guardar en Favoritos
+                                </button>
+                            </div>
+
+                            <!-- Lista de Favoritos -->
+                            <div class="favorites-list" id="favoritesList">
+                                <div class="empty-favorites">
+                                    <span class="empty-icon">💔</span>
+                                    <p>No tienes favoritos guardados</p>
+                                    <p class="empty-hint">Agrega combinaciones que quieras usar en tus armas</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Leyenda de Tiers -->
+                <div class="valuation-legend">
+                    <h4>📖 Leyenda de Tiers</h4>
+                    <div class="legend-items">
+                        <div class="legend-item tier-S">
+                            <span class="legend-icon">👑</span>
+                            <div class="legend-info">
+                                <span class="legend-label">S Tier</span>
+                                <span class="legend-desc">+100% premium • Venta instantánea</span>
+                            </div>
+                        </div>
+                        <div class="legend-item tier-A">
+                            <span class="legend-icon">🔥</span>
+                            <div class="legend-info">
+                                <span class="legend-label">A Tier</span>
+                                <span class="legend-desc">+50-99% premium • Venta rápida</span>
+                            </div>
+                        </div>
+                        <div class="legend-item tier-B">
+                            <span class="legend-icon">⭐</span>
+                            <div class="legend-info">
+                                <span class="legend-label">B Tier</span>
+                                <span class="legend-desc">+20-49% premium • Demanda estable</span>
+                            </div>
+                        </div>
+                        <div class="legend-item tier-C">
+                            <span class="legend-icon">✨</span>
+                            <div class="legend-info">
+                                <span class="legend-label">C Tier</span>
+                                <span class="legend-desc">Precio base • Demanda normal</span>
+                            </div>
+                        </div>
+                        <div class="legend-item tier-D">
+                            <span class="legend-icon">●</span>
+                            <div class="legend-info">
+                                <span class="legend-label">D Tier</span>
+                                <span class="legend-desc">-10-20% descuento • Difícil vender</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ========== HISTORIAL DE VENTAS ========== -->
+            <div class="sales-history-section">
+                <div class="history-header">
+                    <div class="history-title">
+                        <h2>📜 Historial de Ventas</h2>
+                        <p class="history-subtitle">Registro de proyectos completados y ganancias reales</p>
+                    </div>
+                    <div class="history-actions">
+                        <button class="btn-clear-history" onclick="confirmClearHistory()" title="Limpiar historial">
+                            <span>🗑️</span> Limpiar
+                        </button>
+                        <button class="btn-export-history" onclick="exportHistory()" title="Exportar historial">
+                            <span>📤</span> Exportar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Estadísticas Resumidas -->
+                <div class="history-stats-grid">
+                    <div class="history-stat-card total-sales">
+                        <span class="stat-icon">🏷️</span>
+                        <div class="stat-info">
+                            <span class="stat-value" id="historyTotalSales">0</span>
+                            <span class="stat-label">Ventas Totales</span>
+                        </div>
+                    </div>
+                    <div class="history-stat-card total-profit">
+                        <span class="stat-icon">💰</span>
+                        <div class="stat-info">
+                            <span class="stat-value" id="historyTotalProfit">0.00 Ref</span>
+                            <span class="stat-label">Ganancia Total</span>
+                        </div>
+                    </div>
+                    <div class="history-stat-card avg-roi">
+                        <span class="stat-icon">📈</span>
+                        <div class="stat-info">
+                            <span class="stat-value" id="historyAvgROI">0%</span>
+                            <span class="stat-label">ROI Promedio</span>
+                        </div>
+                    </div>
+                    <div class="history-stat-card best-sale">
+                        <span class="stat-icon">⭐</span>
+                        <div class="stat-info">
+                            <span class="stat-value" id="historyBestSale">-</span>
+                            <span class="stat-label">Mejor Venta</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lista del Historial -->
+                <div class="history-list-container">
+                    <div class="history-list" id="historyList">
+                        <div class="empty-history">
+                            <span class="empty-icon">📭</span>
+                            <p>No hay ventas registradas</p>
+                            <p class="empty-hint">Completa proyectos y registra tus ventas para ver estadísticas</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== TAB: CALCULADORA ========== -->
+        <section id="calculator" class="tab-content">
+            <div class="calculator-layout">
+                <!-- Panel de Configuración -->
+                <div class="calc-panel config-panel">
+                    <div class="panel-header">
+                        <h2>⚙️ Configuración de Valores</h2>
+                    </div>
+                    <div class="config-grid">
+                        <div class="config-item">
+                            <label>1 Scrap =</label>
+                            <div class="config-input">
+                                <input type="number" id="scrapValue" value="0.11" step="0.01" min="0">
+                                <span>Ref</span>
+                            </div>
+                        </div>
+                        <div class="config-item">
+                            <label>1 Reclaimed =</label>
+                            <div class="config-input">
+                                <input type="number" id="recValue" value="0.33" step="0.01" min="0">
+                                <span>Ref</span>
+                            </div>
+                        </div>
+                        <div class="config-item">
+                            <label>1 Refined =</label>
+                            <div class="config-input">
+                                <input type="number" id="refValue" value="1" step="0.01" min="0" disabled>
+                                <span>Ref</span>
+                            </div>
+                        </div>
+                        <div class="config-item highlight">
+                            <label>1 Key =</label>
+                            <div class="config-input">
+                                <input type="number" id="keyValue" value="56" step="0.5" min="0">
+                                <span>Ref</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn-calculate" onclick="calculateTotalValue()">
+                        <span class="btn-icon">🔄</span>
+                        Recalcular Valor Total
+                    </button>
+                </div>
+
+                <!-- Panel de Resultados -->
+                <div class="calc-panel results-panel">
+                    <div class="panel-header">
+                        <h2>📊 Desglose de Valor</h2>
+                    </div>
+                    <div class="results-breakdown">
+                        <div class="breakdown-item">
+                            <span class="breakdown-label">Scrap Metal</span>
+                            <span class="breakdown-count" id="calc-scrap-count">0</span>
+                            <span class="breakdown-value" id="calc-scrap-value">0.00 Ref</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="breakdown-label">Reclaimed Metal</span>
+                            <span class="breakdown-count" id="calc-rec-count">0</span>
+                            <span class="breakdown-value" id="calc-rec-value">0.00 Ref</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="breakdown-label">Refined Metal</span>
+                            <span class="breakdown-count" id="calc-ref-count">0</span>
+                            <span class="breakdown-value" id="calc-ref-value">0.00 Ref</span>
+                        </div>
+                        <div class="breakdown-item highlight">
+                            <span class="breakdown-label">Keys</span>
+                            <span class="breakdown-count" id="calc-keys-count">0</span>
+                            <span class="breakdown-value" id="calc-keys-value">0.00 Ref</span>
+                        </div>
+                        <div class="breakdown-total">
+                            <span class="total-label">VALOR TOTAL</span>
+                            <span class="total-value" id="calc-total">0.00 Ref</span>
+                        </div>
+                        <div class="breakdown-conversion">
+                            <span class="conversion-label">Equivalente en Keys:</span>
+                            <span class="conversion-value" id="calc-keys-equivalent">0.00 Keys</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== TAB: MERCADO ========== -->
+        <section id="market" class="tab-content">
+            <div class="section-header">
+                <h2>🏪 Precios de Mercado - Robot Parts</h2>
+                <p class="section-subtitle-text">Compara precios entre tiendas de la comunidad</p>
+            </div>
+
+            <!-- Configuración de Conversión -->
+            <div class="market-config">
+                <div class="config-header">
+                    <h3>💱 Tasas de Conversión</h3>
+                    <span class="config-note">Ajusta según el mercado actual</span>
+                </div>
+                <div class="conversion-inputs">
+                    <div class="conversion-item">
+                        <label>1 Key =</label>
+                        <input type="number" id="convKeyToRef" value="56" step="0.5" min="1">
+                        <span>Ref</span>
+                    </div>
+                    <div class="conversion-item">
+                        <label>1 USD =</label>
+                        <input type="number" id="convUsdToRef" value="55.56" step="0.01" min="0.01">
+                        <span>Ref</span>
+                    </div>
+                    <div class="conversion-item">
+                        <label>1 USD =</label>
+                        <input type="number" id="convUsdToMxn" value="20.40" step="0.01" min="0.01">
+                        <span>MXN</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Leyenda de Tiendas -->
+            <div class="stores-legend">
+                <h3>🏬 Tiendas</h3>
+                <div class="stores-grid" id="storesLegend">
+                    <!-- Se genera dinámicamente -->
+                </div>
+            </div>
+
+            <!-- Panel de Precios de Comunidad (Compacto con Modal) -->
+            <div class="community-prices-panel">
+                <div class="panel-header-row">
+                    <h3>📊 Precios de la Comunidad</h3>
+                    <p class="panel-hint">Actualiza los precios reales que ves en los mercados para cálculos más precisos</p>
+                </div>
+                
+                <!-- Cards compactas para abrir modales -->
+                <div class="price-source-cards">
+                    <!-- Backpack.tf -->
+                    <div class="price-source-card" onclick="openPriceModal('backpack_tf')">
+                        <div class="source-icon">👥</div>
+                        <div class="source-info">
+                            <h4>Backpack.TF</h4>
+                            <span class="source-currency">Precios en Ref</span>
+                        </div>
+                        <div class="source-status" id="bptfStatus">
+                            <span class="status-count">0/8</span>
+                            <span class="status-label">personalizados</span>
+                        </div>
+                        <div class="source-action">
+                            <span class="edit-icon">✏️</span>
+                        </div>
+                    </div>
+
+                    <!-- Steam Market -->
+                    <div class="price-source-card" onclick="openPriceModal('steam_market')">
+                        <div class="source-icon">🎮</div>
+                        <div class="source-info">
+                            <h4>Steam Market</h4>
+                            <span class="source-currency">Precios en <span class="local-currency-code">MXN</span></span>
+                        </div>
+                        <div class="source-status" id="steamStatus">
+                            <span class="status-count">0/8</span>
+                            <span class="status-label">personalizados</span>
+                        </div>
+                        <div class="source-action">
+                            <span class="edit-icon">✏️</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Último guardado / estado -->
+                <div class="prices-global-status" id="pricesGlobalStatus">
+                    <span class="status-icon">ℹ️</span>
+                    <span class="status-text">Usando precios estimados. Haz clic en una fuente para personalizar.</span>
+                </div>
+            </div>
+
+            <!-- Modal de Precios -->
+            <div class="price-modal-overlay" id="priceModalOverlay" onclick="closePriceModal(event)">
+                <div class="price-modal" onclick="event.stopPropagation()">
+                    <div class="price-modal-header">
+                        <div class="modal-title-row">
+                            <span class="modal-icon" id="priceModalIcon">👥</span>
+                            <h3 id="priceModalTitle">Precios de Backpack.TF</h3>
+                        </div>
+                        <button class="modal-close-btn" onclick="closePriceModal()">✕</button>
+                    </div>
+                    <div class="price-modal-hint" id="priceModalHint">
+                        Ingresa los precios actuales que ves en Backpack.tf
+                    </div>
+                    <div class="price-modal-body" id="priceModalBody">
+                        <!-- Se genera dinámicamente -->
+                    </div>
+                    <div class="price-modal-footer">
+                        <button class="btn-modal-reset" id="btnModalReset" onclick="resetModalPrices()">
+                            <span>🔄</span> Usar Estimados
+                        </button>
+                        <a href="#" target="_blank" class="btn-modal-open" id="btnModalOpen">
+                            <span>🔗</span> Abrir Sitio
+                        </a>
+                        <button class="btn-modal-save" onclick="saveModalPrices()">
+                            <span>💾</span> Guardar
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabla de Precios -->
+            <div class="market-table-container">
+                <table class="market-table" id="marketPricesTable">
+                    <thead>
+                        <tr>
+                            <th class="part-col">Pieza</th>
+                            <th class="store-col">Scrap.TF</th>
+                            <th class="store-col">Backpack.TF</th>
+                            <th class="store-col">STN Trading</th>
+                            <th class="store-col">TradeIT.GG</th>
+                            <th class="store-col">Steam Market</th>
+                            <th class="best-col">Mejor Opción</th>
+                        </tr>
+                    </thead>
+                    <tbody id="marketTableBody">
+                        <!-- Se genera dinámicamente -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Resumen de Costos -->
+            <div class="market-summary">
+                <h3>📊 Calculadora de Costo Total</h3>
+                <p class="summary-hint">Calcula cuánto costaría comprar todas las piezas de tu proyecto</p>
+                
+                <div class="cost-calculator">
+                    <div class="calc-input-group">
+                        <label>Tipo de Kit:</label>
+                        <select id="marketKitType">
+                            <option value="specialized">Specialized (29 piezas)</option>
+                            <option value="professional">Professional (25 piezas)</option>
+                        </select>
+                    </div>
+                    <button class="btn-calculate" onclick="calculateMarketCost()">
+                        <span>💰</span> Calcular Costo Estimado
+                    </button>
+                </div>
+
+                <div class="cost-results" id="costResults" style="display: none;">
+                    <h4>Costo Estimado por Tienda</h4>
+                    <div class="cost-grid" id="costGrid">
+                        <!-- Se genera dinámicamente -->
+                    </div>
+                    <div class="cost-recommendation" id="costRecommendation">
+                        <!-- Recomendación -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Proyectos Activos - Consulta de Costos -->
+            <div class="market-projects-section">
+                <div class="section-header">
+                    <h3>🔨 Mis Proyectos Activos</h3>
+                    <p class="section-hint">Consulta el costo de piezas faltantes y recomendaciones de compra</p>
+                </div>
+                <div class="market-projects-list" id="marketProjectsList">
+                    <!-- Se genera dinámicamente -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <p>TF2 Mann Co. Forge © 2025 | No afiliado con Valve Corporation</p>
+    </footer>
+
+    <!-- Modal de Confirmación -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Confirmar Acción</h3>
+            </div>
+            <div class="modal-body">
+                <p id="modalMessage">¿Estás seguro?</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-cancel" onclick="closeModal()">Cancelar</button>
+                <button class="btn-confirm" id="modalConfirm">Confirmar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Dinámico (para ventas, costos, etc.) -->
+    <div class="dynamic-modal" id="modal">
+        <div class="dynamic-modal-content" id="modalContent">
+            <!-- Contenido dinámico se inyecta aquí -->
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Modal de Vista Previa de Imagen -->
+    <div class="image-preview-modal" id="imagePreviewModal" onclick="closeImagePreview(event)">
+        <div class="preview-content" onclick="event.stopPropagation()">
+            <button class="preview-close" onclick="closeImagePreview()">&times;</button>
+            <div class="preview-image-container">
+                <img src="" alt="" id="previewImage" class="preview-image">
+            </div>
+            <div class="preview-info">
+                <h3 id="previewTitle">Nombre del Efecto</h3>
+                <div class="preview-meta" id="previewMeta">
+                    <!-- Se genera dinámicamente -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Popularidad por Clase/Arma -->
+    <div class="popularity-modal-overlay" id="popularityModalOverlay" onclick="closePopularityModal(event)">
+        <div class="popularity-modal" onclick="event.stopPropagation()">
+            <div class="popularity-modal-header">
+                <h2>📊 Datos de Popularidad</h2>
+                <p class="modal-subtitle">Información basada en demanda de la comunidad TF2</p>
+                <button class="modal-close-btn" onclick="closePopularityModal()">&times;</button>
+            </div>
+            
+            <div class="popularity-tabs">
+                <button class="pop-tab active" data-tab="classes" onclick="switchPopularityTab('classes')">
+                    👥 Por Clase
+                </button>
+                <button class="pop-tab" data-tab="weapons" onclick="switchPopularityTab('weapons')">
+                    🔫 Por Arma
+                </button>
+                <button class="pop-tab" data-tab="kits" onclick="switchPopularityTab('kits')">
+                    ⚡ Por Kit
+                </button>
+            </div>
+
+            <div class="popularity-content">
+                <!-- Tab: Clases -->
+                <div class="pop-tab-content active" id="popTabClasses">
+                    <div class="popularity-info-banner">
+                        <span class="info-icon">ℹ️</span>
+                        <p>Rankings basados en demanda general de kits Killstreak por clase</p>
+                    </div>
+                    <div class="popularity-grid" id="classPopularityGrid">
+                        <!-- Se genera dinámicamente -->
+                    </div>
+                </div>
+
+                <!-- Tab: Armas -->
+                <div class="pop-tab-content" id="popTabWeapons">
+                    <div class="popularity-info-banner">
+                        <span class="info-icon">ℹ️</span>
+                        <p>Armas más buscadas para kits Killstreak (todas las clases)</p>
+                    </div>
+                    <div class="weapon-filter-row">
+                        <label>Filtrar por clase:</label>
+                        <select id="popWeaponClassFilter" onchange="filterWeaponPopularity()">
+                            <option value="">Todas las clases</option>
+                        </select>
+                    </div>
+                    <div class="popularity-list" id="weaponPopularityList">
+                        <!-- Se genera dinámicamente -->
+                    </div>
+                </div>
+
+                <!-- Tab: Kits -->
+                <div class="pop-tab-content" id="popTabKits">
+                    <div class="popularity-info-banner">
+                        <span class="info-icon">ℹ️</span>
+                        <p>Preferencia de tipo de kit según la comunidad</p>
+                    </div>
+                    <div class="kit-popularity-cards" id="kitPopularityCards">
+                        <!-- Se genera dinámicamente -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="popularity-modal-footer">
+                <p class="data-disclaimer">⚠️ Datos aproximados basados en observaciones de mercado. Los precios y demanda pueden variar.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ======================================== -->
+    <!-- SCRIPTS MODULARES - Orden de dependencias -->
+    <!-- ======================================== -->
+    
+    <!-- 1. Datos y Constantes (sin dependencias) -->
+    <script src="js/data.js?v=23"></script>
+    
+    <!-- 2. Estado de la Aplicación (depende de data.js) -->
+    <script src="js/state.js?v=17"></script>
+    
+    <!-- 3. Almacenamiento (depende de state.js) -->
+    <script src="js/storage.js?v=17"></script>
+    
+    <!-- 4. Conversión de Moneda (depende de state.js) -->
+    <script src="js/currency.js?v=17"></script>
+    
+    <!-- 5. Sistema de Valoración (depende de data.js, currency.js) -->
+    <script src="js/valuation.js?v=29"></script></script>
+    
+    <!-- 6. UI - Componentes de Interfaz -->
+    <script src="js/ui/toasts.js?v=17"></script>
+    <script src="js/ui/modals.js?v=17"></script>
+    <script src="js/ui/tabs.js?v=17"></script>
+    <script src="js/ui/filters.js?v=17"></script>
+    
+    <!-- 7. Features - Funcionalidades Principales -->
+    <script src="js/features/dashboard.js?v=17"></script>
+    <script src="js/features/backpack.js?v=17"></script>
+    <script src="js/features/forge.js?v=47"></script>
+    <script src="js/features/kits.js?v=21"></script>
+    <script src="js/features/history.js?v=17"></script>
+    <script src="js/features/market.js?v=17"></script>
+    <script src="js/features/calculator.js?v=18"></script>
+    <script src="js/features/popularity.js?v=17"></script>
+    
+    <!-- 8. Main - Inicialización (debe ir al final) -->
+    <script src="js/main.js?v=18"></script>
+</body>
+</main>
+
+    <!-- Footer de derechos -->
+    <footer class="main-footer" style="text-align:center; padding: 18px 0; color: var(--text-muted); font-size: 0.95rem; background: var(--bg-card); border-top: 1px solid var(--border-inactive);">
+        © 2026 Jorge Luigi400 &amp; GitHub Copilot — Proyecto colaborativo, código refinado en conjunto. Todos los derechos reservados.
+    </footer>
+</body>
+</html>

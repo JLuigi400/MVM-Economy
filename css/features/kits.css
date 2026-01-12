@@ -1,0 +1,524 @@
+/* ========================================
+   TF2 MANN CO. FORGE - KITS
+   Estilos de Mis Kits completados
+   ======================================== */
+
+/* ===== BADGE DE INVENTARIO ===== */
+.popularity-tab-btn .tab-badge.inventory {
+    background: rgba(0, 180, 150, 0.3);
+    color: #00B496;
+    min-width: 22px;
+    text-align: center;
+}
+
+/* ===== CONTENEDOR PRINCIPAL ===== */
+.mykits-container {
+    padding: var(--spacing-md);
+}
+
+/* ===== FILTROS ===== */
+.mykits-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+    padding: var(--spacing-lg);
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.filter-group label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.filter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+}
+
+.filter-btn {
+    padding: 6px 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.filter-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-main);
+}
+
+.filter-btn.active {
+    background: var(--accent-orange);
+    border-color: var(--accent-orange);
+    color: #000;
+}
+
+.filter-btn.basic.active {
+    background: #FF6B6B;
+    border-color: #FF6B6B;
+}
+
+.filter-btn.specialized.active {
+    background: #4ECDC4;
+    border-color: #4ECDC4;
+}
+
+.filter-btn.professional.active {
+    background: #9B59B6;
+    border-color: #9B59B6;
+}
+
+.filter-btn.imbued.active {
+    background: #F39C12;
+    border-color: #F39C12;
+}
+
+/* Filtros de clase */
+.class-filter {
+    gap: 4px;
+}
+
+.class-btn {
+    padding: 6px 10px;
+    min-width: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.class-filter-icon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    filter: grayscale(50%) brightness(0.8);
+    transition: all 0.2s ease;
+}
+
+.class-btn:hover .class-filter-icon,
+.class-btn.active .class-filter-icon {
+    filter: none;
+}
+
+.class-btn.active {
+    background: rgba(255, 140, 0, 0.2);
+    border-color: var(--accent-orange);
+}
+
+/* ===== GRID DE MIS KITS ===== */
+.mykits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+/* ===== TARJETA DE KIT ===== */
+.mykit-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    position: relative;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.mykit-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--border-color);
+}
+
+.mykit-card.basic::before {
+    background: linear-gradient(90deg, #FF6B6B, #FF8E8E, #FF6B6B);
+}
+
+.mykit-card.specialized::before {
+    background: linear-gradient(90deg, #4ECDC4, #7EDDD6, #4ECDC4);
+}
+
+.mykit-card.professional::before {
+    background: linear-gradient(90deg, #9B59B6, #B07CC6, #9B59B6);
+}
+
+.mykit-card[data-tier="god"]::before {
+    background: linear-gradient(90deg, var(--god-tier), #FFA500, var(--god-tier));
+    animation: goldShimmer 3s ease infinite;
+}
+
+.mykit-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Header del kit */
+.mykit-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+}
+
+.mykit-type-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.mykit-type-badge.basic {
+    background: rgba(255, 107, 107, 0.2);
+    color: #FF6B6B;
+}
+
+.mykit-type-badge.specialized {
+    background: rgba(78, 205, 196, 0.2);
+    color: #4ECDC4;
+}
+
+.mykit-type-badge.professional {
+    background: rgba(155, 89, 182, 0.2);
+    color: #9B59B6;
+}
+
+.mykit-type-icon {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+}
+
+.mykit-tier-badge {
+    padding: 4px 8px;
+    border-radius: var(--radius-sm);
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-left: auto;
+}
+
+.mykit-tier-badge.god {
+    background: rgba(255, 215, 0, 0.2);
+    color: var(--god-tier);
+    border: 1px solid rgba(255, 215, 0, 0.4);
+    animation: pulse 2s ease infinite;
+}
+
+.mykit-tier-badge.high {
+    background: rgba(255, 105, 180, 0.2);
+    color: var(--high-tier);
+}
+
+.mykit-tier-badge.mid {
+    background: rgba(147, 112, 219, 0.2);
+    color: var(--mid-tier);
+}
+
+.mykit-tier-badge.low {
+    background: rgba(126, 126, 126, 0.2);
+    color: var(--text-muted);
+}
+
+.mykit-class-badge {
+    width: 28px;
+    height: 28px;
+    padding: 4px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+}
+
+.mykit-class-badge img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Nombre del arma */
+.mykit-weapon {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-md);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.weapon-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.imbued-badge {
+    font-size: 0.75rem;
+    padding: 4px 8px;
+    border-radius: var(--radius-sm);
+    background: rgba(128, 128, 128, 0.2);
+    color: var(--text-muted);
+}
+
+.imbued-badge.is-imbued {
+    background: rgba(243, 156, 18, 0.2);
+    color: #F39C12;
+}
+
+/* Efectos del kit */
+.kit-effects {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+}
+
+.kit-effect {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-sm);
+    font-size: 0.8rem;
+}
+
+.kit-effect.sheen {
+    border-left: 3px solid var(--sheen-color);
+}
+
+.kit-effect .effect-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.kit-effect .effect-icon {
+    font-size: 0.9rem;
+}
+
+.kit-effect .effect-label {
+    color: var(--text-secondary);
+}
+
+/* ===== STOCK TEXT ===== */
+.mykit-stock {
+    margin-bottom: var(--spacing-md);
+}
+
+.stock-text-container {
+    display: flex;
+    gap: 4px;
+}
+
+.stock-text-input {
+    flex: 1;
+    padding: 8px 12px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    color: var(--text-main);
+    font-size: 0.8rem;
+    font-family: 'Fira Code', monospace;
+}
+
+.copy-stock-btn {
+    padding: 8px 12px;
+    background: rgba(255, 140, 0, 0.2);
+    border: 1px solid var(--accent-orange);
+    border-radius: var(--radius-sm);
+    color: var(--accent-orange);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.copy-stock-btn:hover {
+    background: var(--accent-orange);
+    color: #000;
+}
+
+.copy-stock-btn.copied {
+    background: var(--success);
+    border-color: var(--success);
+    color: #fff;
+}
+
+/* ===== RECOMENDACIONES DE VENTA ===== */
+.mykit-recommendations {
+    margin-bottom: var(--spacing-md);
+}
+
+.mykit-recommendations h4 {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.sell-recommendation {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: var(--radius-sm);
+    margin-bottom: 4px;
+}
+
+.sell-recommendation[data-rating="5"],
+.sell-recommendation[data-rating="4"] {
+    background: rgba(255, 215, 0, 0.08);
+}
+
+.rec-icon {
+    font-size: 1.1rem;
+    width: 28px;
+    text-align: center;
+}
+
+.rec-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.rec-market {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-main);
+}
+
+.rec-note {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+}
+
+.rec-stars {
+    font-size: 0.75rem;
+    color: var(--god-tier);
+    letter-spacing: 1px;
+}
+
+/* ===== FOOTER DEL KIT ===== */
+.mykit-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--border-color);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.kit-cost {
+    color: var(--success);
+    font-weight: 500;
+}
+
+/* ===== ACCIONES DEL KIT ===== */
+.mykit-actions {
+    position: absolute;
+    top: var(--spacing-md);
+    right: var(--spacing-md);
+    display: flex;
+    gap: 4px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.mykit-card:hover .mykit-actions {
+    opacity: 1;
+}
+
+.mykit-action-btn {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.9rem;
+}
+
+.mykit-action-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.mykit-action-btn.delete:hover {
+    background: rgba(231, 76, 60, 0.3);
+    border-color: #E74C3C;
+}
+
+/* ===== ESTADO VACÍO ===== */
+.mykits-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: calc(var(--spacing-xl) * 2);
+    text-align: center;
+    color: var(--text-muted);
+}
+
+.mykits-empty .empty-icon {
+    font-size: 4rem;
+    margin-bottom: var(--spacing-md);
+    opacity: 0.5;
+}
+
+.mykits-empty h3 {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.mykits-empty p {
+    font-size: 0.9rem;
+}
+
+.no-results-message {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--spacing-xl);
+    color: var(--text-muted);
+}
+
+.no-results-message span {
+    font-size: 2rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+/* ===== KITS RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .mykits-filters {
+        flex-direction: column;
+    }
+    
+    .mykits-grid {
+        grid-template-columns: 1fr;
+    }
+}

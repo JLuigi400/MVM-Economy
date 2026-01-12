@@ -1,0 +1,207 @@
+-- ==========================================
+-- MvM ECONOMY DASHBOARD - Setup Completo
+-- ==========================================
+-- Última actualización: 23 de Diciembre 2025
+-- Base de Datos: mannco_forge (MySQL 5.7+)
+-- Conexión: host=localhost, user=root, password=toor, database=mannco_forge
+--
+-- INSTRUCCIONES:
+-- 1. Abre MySQL Workbench o terminal MySQL
+-- 2. Copia TODO este archivo y ejecuta en tu cliente SQL
+-- 3. Si hay errores de Safe Mode, desactívalo en Preferences > SQL Editor
+-- ==========================================
+
+-- 1. LIMPIEZA TOTAL (¡Adiós datos viejos!)
+DROP SCHEMA IF EXISTS mannco_forge;
+CREATE SCHEMA mannco_forge DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE mannco_forge;
+
+-- ==========================================
+-- 2. ESTRUCTURA (Tablas Catálogos)
+-- ==========================================
+
+-- Catálogo de Brillos (Sheens/Cosmetics)
+CREATE TABLE cat_sheens (
+  id_sheen INT AUTO_INCREMENT PRIMARY KEY,
+  nombre VARCHAR(100) NOT NULL UNIQUE,
+  color_hex VARCHAR(7) DEFAULT '#ffffff',
+  tier ENUM('God', 'High', 'Mid', 'Low') DEFAULT 'Mid',
+  KEY idx_tier (tier)
+);
+
+-- Catálogo de Efectos (Killstreakers)
+CREATE TABLE cat_effects (
+  id_effect INT AUTO_INCREMENT PRIMARY KEY,
+  nombre VARCHAR(100) NOT NULL UNIQUE,
+  tier ENUM('God', 'High', 'Mid', 'Low') DEFAULT 'Mid',
+  KEY idx_tier (tier)
+);
+
+-- Tiendas Disponibles
+CREATE TABLE tiendas (
+  id_tienda INT AUTO_INCREMENT PRIMARY KEY,
+  nombre VARCHAR(50) NOT NULL,
+  tipo ENUM('Bot', 'Marketplace', 'P2P') NOT NULL,
+  url_logo VARCHAR(255) NULL,
+  KEY idx_tipo (tipo)
+);
+
+-- ==========================================
+-- 3. ESTRUCTURA (Tabla de Inventario)
+-- ==========================================
+
+-- Definición de Piezas (El "Diccionario" de items)
+CREATE TABLE piezas (
+  id_pieza INT AUTO_INCREMENT PRIMARY KEY,
+  nombre VARCHAR(100) NOT NULL UNIQUE,
+  tipo ENUM('Currency', 'Robot Part', 'Killstreak Weapon', 'Cosmetic') NOT NULL,
+  imagen_url VARCHAR(255) NULL,
+  inv_actual INT DEFAULT 0,
+  KEY idx_tipo (tipo),
+  KEY idx_nombre (nombre)
+);
+
+-- Historial de Precios (Economía)
+CREATE TABLE precios (
+  id_precio INT AUTO_INCREMENT PRIMARY KEY,
+  id_pieza INT NOT NULL,
+  id_tienda INT NOT NULL,
+  precio_ref DECIMAL(10,2) DEFAULT 0.00,
+  fecha_update TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (id_pieza) REFERENCES piezas(id_pieza) ON DELETE CASCADE,
+  FOREIGN KEY (id_tienda) REFERENCES tiendas(id_tienda) ON DELETE CASCADE,
+  KEY idx_pieza (id_pieza),
+  KEY idx_tienda (id_tienda)
+);
+
+-- ==========================================
+-- 4. ESTRUCTURA (Tabla de Fabricadores)
+-- ==========================================
+
+-- Tus Proyectos (Kits)
+CREATE TABLE fabricadores (
+  id_fabricador INT AUTO_INCREMENT PRIMARY KEY,
+  nombre_kit VARCHAR(100) NOT NULL,
+  tipo_kit ENUM('Basic', 'Specialized', 'Professional') NOT NULL,
+  id_sheen INT NULL,
+  id_effect INT NULL,
+  estado VARCHAR(50) DEFAULT 'Incompleto',
+  fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (id_sheen) REFERENCES cat_sheens(id_sheen) ON DELETE SET NULL,
+  FOREIGN KEY (id_effect) REFERENCES cat_effects(id_effect) ON DELETE SET NULL,
+  KEY idx_tipo (tipo_kit),
+  KEY idx_estado (estado)
+);
+
+-- Ingredientes requeridos por tus kits
+CREATE TABLE ingredientes_kit (
+  id_ingrediente INT AUTO_INCREMENT PRIMARY KEY,
+  id_fabricador INT NOT NULL,
+  id_pieza INT NULL,
+  cantidad_requerida INT NOT NULL,
+  FOREIGN KEY (id_fabricador) REFERENCES fabricadores(id_fabricador) ON DELETE CASCADE,
+  FOREIGN KEY (id_pieza) REFERENCES piezas(id_pieza) ON DELETE SET NULL,
+  KEY idx_fabricador (id_fabricador),
+  KEY idx_pieza (id_pieza)
+);
+
+-- ==========================================
+-- 5. INSERTAR DATOS - CATÁLOGOS Y TIENDAS
+-- ==========================================
+
+-- Insertamos Tiendas
+INSERT INTO tiendas (nombre, tipo) VALUES
+('Scrap.tf', 'Bot'),
+('Backpack.tf', 'P2P'),
+('Steam Community Market', 'Marketplace'),
+('STN Trading', 'Bot');
+
+-- Insertamos Brillos (Sheens) con Tier
+INSERT INTO cat_sheens (nombre, color_hex, tier) VALUES
+('Team Shine', '#FF4040', 'God'),           -- Rojo/Azul según equipo
+('Hot Rod', '#FF69B4', 'High'),             -- Rosa intenso
+('Manndarin', '#FF8000', 'Mid'),            -- Naranja fuego
+('Deadly Daffodil', '#FFFF00', 'Mid'),      -- Amarillo dorado
+('Agonizing Emerald', '#00FF00', 'Low'),    -- Verde esmeralda
+('Mean Green', '#808000', 'Low'),           -- Verde lima
+('Villainous Violet', '#800080', 'High');   -- Púrpura real
+
+-- Insertamos Efectos (Killstreakers) con Tier
+INSERT INTO cat_effects (nombre, tier) VALUES
+('Fire Horns', 'God'),                      -- Cuernos de fuego
+('Cerebral Discharge', 'High'),             -- Rayos eléctricos
+('Tornado', 'High'),                        -- Torbellinos
+('Singularity', 'Mid'),                     -- Efecto de vórtice
+('Incinerator', 'Mid'),                     -- Humo y chispas
+('Flames', 'Low'),                          -- Llamas simples
+('Hypno-Beam', 'Low');                      -- Anillos concéntricos
+
+-- ==========================================
+-- 6. INSERTAR DATOS - PIEZAS DE ROBOT
+-- ==========================================
+
+-- ROBOT PARTS (Se usan en fabricadores)
+INSERT INTO piezas (nombre, tipo, inv_actual) VALUES
+('Reinforced Robot Bomb Stabilizer', 'Robot Part', 0),
+('Reinforced Robot Emotion Detector', 'Robot Part', 0),
+('Reinforced Robot Humor Suppression Pump', 'Robot Part', 0),
+('Battle-Worn Robot KB-808', 'Robot Part', 0),
+('Battle-Worn Robot Money Furnace', 'Robot Part', 0),
+('Battle-Worn Robot Taunt Processor', 'Robot Part', 0),
+('Pristine Robot Currency Digester', 'Robot Part', 0),
+('Pristine Robot Brainstorm Bulb', 'Robot Part', 0),
+('Pristine Robot Rocket Firing Turret', 'Robot Part', 0),
+('Pristine Robot Sentry Guns', 'Robot Part', 0);
+
+-- CURRENCIES (No se usan en fabricadores)
+INSERT INTO piezas (nombre, tipo, inv_actual) VALUES
+('Refined Metal', 'Currency', 0),
+('Reclaimed Metal', 'Currency', 0),
+('Scrap Metal', 'Currency', 0),
+('Mann Co. Supply Crate Key', 'Currency', 0);
+
+-- ==========================================
+-- 7. ACTUALIZAR IMAGENES (Mann Co. Economy)
+-- Ejecutar estas sentencias para fijar `imagen_url` en las piezas de economía.
+-- Estas URLs provienen de `urls.txt` (wiki.tf y STNTrading)
+-- ==========================================
+
+UPDATE piezas SET imagen_url = 'https://wiki.teamfortress.com/w/images/8/83/Backpack_Mann_Co._Supply_Crate_Key.png' WHERE nombre = 'Mann Co. Supply Crate Key' OR nombre LIKE '%Mann Co%Supply%Crate%Key%';
+UPDATE piezas SET imagen_url = '/images/scrap_metal.svg' WHERE nombre = 'Scrap Metal' OR nombre LIKE '%Scrap%Metal%';
+
+UPDATE piezas SET imagen_url = '/images/reclaimed_metal.svg' WHERE nombre = 'Reclaimed Metal' OR nombre LIKE '%Reclaimed%Metal%';
+
+UPDATE piezas SET imagen_url = '/images/refined_metal.svg' WHERE nombre = 'Refined Metal' OR nombre LIKE '%Refined%Metal%';
+
+-- ==========================================
+-- 8. REMOVER PIEZAS OBSOLETAS (si existen)
+-- Estas entradas quedaron obsoletas y se eliminan por seguridad para evitar datos inútiles.
+-- ==========================================
+
+DELETE FROM piezas WHERE nombre IN (
+  'Pristine Robot Rocket Firing Turret',
+  'Pristine Robot Sentry Guns',
+  'Pristine Robot Voice Synthesizer',
+  'Pristine Robot Armor Segment'
+);
+
+-- Verificar:
+-- SELECT id_pieza, nombre, imagen_url FROM piezas WHERE nombre LIKE '%Metal%' OR nombre LIKE '%Mann Co%';
+
+
+-- Agregado de Gemini --
+
+USE `mannco_forge`;
+
+-- Aseguramos que el stock no sea negativo por error
+ALTER TABLE `piezas` 
+MODIFY COLUMN `inv_actual` INT DEFAULT 0 CHECK (`inv_actual` >= 0);
+
+-- Opcional: Crear un historial de movimientos para saber cuándo añadiste piezas
+CREATE TABLE IF NOT EXISTS historial_inventario (
+  id_movimiento INT PRIMARY KEY AUTO_INCREMENT,
+  id_pieza INT,
+  cantidad INT, -- Positivo para añadir, negativo para usar
+  fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (id_pieza) REFERENCES piezas(id_pieza)
+);

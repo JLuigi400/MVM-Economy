@@ -1,0 +1,346 @@
+/* =============================================
+   BUTTONS.CSS - Estilos de Botones Comunes
+   Botones reutilizables en toda la aplicación
+   ============================================= */
+
+/* ===== BOTÓN BASE ===== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: none;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    text-decoration: none;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+/* ===== VARIANTES DE BOTÓN ===== */
+
+/* Primary */
+.btn-primary {
+    background: linear-gradient(135deg, var(--accent-blu), #4488FF);
+    color: white;
+}
+
+.btn-primary:hover {
+    box-shadow: 0 4px 12px rgba(40, 98, 200, 0.3);
+}
+
+/* Secondary */
+.btn-secondary {
+    background: var(--bg-tertiary);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-inactive);
+}
+
+.btn-secondary:hover {
+    background: var(--bg-secondary);
+    border-color: var(--text-muted);
+}
+
+/* Success */
+.btn-success {
+    background: linear-gradient(135deg, var(--status-ready), #66BB6A);
+    color: white;
+}
+
+.btn-success:hover {
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+}
+
+/* Danger */
+.btn-danger {
+    background: linear-gradient(135deg, var(--accent-red), #FF5252);
+    color: white;
+}
+
+.btn-danger:hover {
+    box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+}
+
+/* Warning/Gold */
+.btn-warning,
+.btn-gold {
+    background: linear-gradient(135deg, var(--accent-gold), #FFA500);
+    color: var(--bg-main);
+}
+
+.btn-warning:hover,
+.btn-gold:hover {
+    box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+}
+
+/* Ghost */
+.btn-ghost {
+    background: transparent;
+    color: var(--text-secondary);
+    border: 1px solid var(--border-inactive);
+}
+
+.btn-ghost:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--accent-gold);
+    color: var(--text-main);
+}
+
+/* ===== TAMAÑOS DE BOTÓN ===== */
+.btn-sm {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: 0.75rem;
+}
+
+.btn-lg {
+    padding: var(--spacing-md) var(--spacing-lg);
+    font-size: 1rem;
+}
+
+.btn-full {
+    width: 100%;
+}
+
+/* ===== BOTONES DE ACCIÓN ===== */
+.btn-action {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-inactive);
+    border-radius: var(--radius-sm);
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.btn-action:hover {
+    background: var(--bg-input);
+    border-color: var(--accent-gold);
+    color: var(--text-main);
+}
+
+.btn-action.edit:hover {
+    background: rgba(40, 98, 200, 0.2);
+    border-color: var(--accent-blu);
+}
+
+.btn-action.delete:hover {
+    background: rgba(255, 107, 107, 0.2);
+    border-color: var(--accent-red);
+    color: var(--accent-red);
+}
+
+/* ===== BOTONES DE FORGE ===== */
+.btn-forge {
+    width: 100%;
+    padding: var(--spacing-md) var(--spacing-lg);
+    background: linear-gradient(135deg, var(--accent-gold), #FFA500);
+    border: none;
+    border-radius: var(--radius-md);
+    color: var(--bg-main);
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-forge:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+}
+
+.btn-forge:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: var(--bg-tertiary);
+    color: var(--text-muted);
+}
+
+/* ===== BOTONES ICON-ONLY ===== */
+.btn-icon {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-inactive);
+    border-radius: var(--radius-sm);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.btn-icon:hover {
+    background: var(--bg-input);
+    border-color: var(--accent-gold);
+    color: var(--text-main);
+    transform: scale(1.1);
+}
+
+.btn-icon.sm {
+    width: 28px;
+    height: 28px;
+    font-size: 0.9rem;
+}
+
+.btn-icon.lg {
+    width: 44px;
+    height: 44px;
+    font-size: 1.2rem;
+}
+
+/* ===== BOTONES DE COUNTER ===== */
+.counter-btn {
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.counter-btn.minus {
+    background: var(--accent-red);
+    color: white;
+}
+
+.counter-btn.plus {
+    background: var(--accent-blu);
+    color: white;
+}
+
+.counter-btn:hover {
+    transform: scale(1.1);
+}
+
+/* ===== BOTONES DE STOCK ===== */
+.stock-btn {
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    background: var(--bg-card);
+    color: var(--text-main);
+}
+
+.stock-btn:hover {
+    transform: scale(1.1);
+}
+
+.stock-btn.minus:hover {
+    background: var(--accent-red);
+    color: white;
+}
+
+.stock-btn.plus:hover {
+    background: var(--accent-blu);
+    color: white;
+}
+
+/* ===== BOTONES DE MODAL ===== */
+.modal-close-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: var(--spacing-xs);
+    border-radius: var(--radius-xs);
+    transition: all var(--transition-fast);
+}
+
+.modal-close-btn:hover {
+    background: var(--bg-tertiary);
+    color: var(--text-main);
+}
+
+/* ===== BOTONES DE TOGGLE ===== */
+.toggle-btn {
+    padding: var(--spacing-xs) var(--spacing-md);
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all var(--transition-fast);
+}
+
+.toggle-btn:hover:not(.active) {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.toggle-btn.active {
+    background: var(--accent-primary);
+    color: #000;
+    font-weight: 600;
+}
+
+/* ===== ESTADOS DE BOTÓN ===== */
+.btn:disabled,
+.btn.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.btn.loading {
+    position: relative;
+    color: transparent;
+}
+
+.btn.loading::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border: 2px solid currentColor;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ===== BOTONES CON EFECTO SHIMMER ===== */
+.btn-shimmer {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-shimmer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.btn-shimmer:hover::before {
+    left: 100%;
+}

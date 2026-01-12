@@ -1,0 +1,322 @@
+/* =============================================
+   FORMS.CSS - Estilos de Formularios
+   Inputs, selects, checkboxes y otros elementos de form
+   ============================================= */
+
+/* ===== INPUTS DE TEXTO ===== */
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+textarea {
+    width: 100%;
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--bg-input);
+    border: 1px solid var(--border-inactive);
+    border-radius: var(--radius-sm);
+    color: var(--text-main);
+    font-size: 0.95rem;
+    transition: all var(--transition-fast);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: var(--accent-gold);
+    box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.2);
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--text-muted);
+}
+
+/* ===== SELECTS ===== */
+select {
+    width: 100%;
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--bg-input);
+    border: 1px solid var(--border-inactive);
+    border-radius: var(--radius-sm);
+    color: var(--text-main);
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%238B8B8B' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right var(--spacing-sm) center;
+    padding-right: var(--spacing-xl);
+}
+
+select:hover {
+    border-color: var(--accent-gold);
+    background-color: rgba(255, 202, 40, 0.05);
+}
+
+/* ===== FORM GROUP ===== */
+.form-group {
+    margin-bottom: var(--spacing-md);
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: var(--spacing-xs);
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.form-group .form-hint {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: var(--spacing-xs);
+}
+
+/* ===== FORM ROW ===== */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: var(--spacing-sm);
+    align-items: end;
+}
+
+.form-row.equal {
+    grid-template-columns: 1fr 1fr;
+}
+
+.form-row.triple {
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+/* ===== CHECKBOX ===== */
+.checkbox-group {
+    margin-bottom: var(--spacing-md);
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    cursor: pointer;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    accent-color: var(--accent-blu);
+    cursor: pointer;
+}
+
+.checkbox-label.small {
+    font-size: 0.8rem;
+}
+
+.checkbox-label.small input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+}
+
+/* ===== INPUT HINT ===== */
+.input-hint {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: var(--spacing-xs);
+}
+
+/* ===== STOCK INPUT ===== */
+.stock-input {
+    width: 60px;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background: var(--bg-input);
+    border: 1px solid var(--border-inactive);
+    border-radius: var(--radius-sm);
+    color: var(--text-main);
+    font-size: 1rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.stock-input:focus {
+    border-color: var(--accent-gold);
+    outline: none;
+}
+
+/* ===== PART REQ INPUT ===== */
+.part-req-input {
+    width: 50px;
+    text-align: center;
+    padding: var(--spacing-xs);
+    border: 1px solid var(--border-inactive);
+    border-radius: var(--radius-xs);
+    background: var(--bg-input);
+    color: var(--text-main);
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.part-req-input:focus {
+    border-color: var(--accent-gold);
+    outline: none;
+}
+
+/* ===== COST INPUT ===== */
+.cost-field {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    background: var(--bg-input);
+    border: 1px solid var(--border-inactive);
+    border-radius: var(--radius-sm);
+    padding: var(--spacing-xs) var(--spacing-sm);
+}
+
+.cost-field input {
+    flex: 1;
+    background: transparent !important;
+    border: none !important;
+    padding: var(--spacing-xs) !important;
+    color: var(--text-main);
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: right;
+    width: 60px;
+}
+
+.cost-field input:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.cost-field .cost-label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    min-width: 35px;
+}
+
+/* ===== CONVERSION INPUT ===== */
+.conversion-item input {
+    width: 80px;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border: 1px solid var(--border-inactive);
+    border-radius: var(--radius-sm);
+    background: var(--bg-input);
+    color: var(--text-main);
+    text-align: center;
+    font-weight: 600;
+}
+
+/* ===== MODAL INPUT ===== */
+.modal-item-input {
+    width: 100%;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-inactive);
+    border-radius: var(--radius-xs);
+    color: var(--text-main);
+    font-size: 0.95rem;
+    text-align: center;
+}
+
+.modal-item-input:focus {
+    outline: none;
+    border-color: var(--accent-gold);
+    box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.2);
+}
+
+/* ===== INPUT CON ICONO ===== */
+.input-with-icon {
+    position: relative;
+}
+
+.input-with-icon input {
+    padding-left: var(--spacing-xl);
+}
+
+.input-with-icon .input-icon {
+    position: absolute;
+    left: var(--spacing-sm);
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+}
+
+/* ===== INPUT ESTADOS ===== */
+input.error,
+select.error,
+textarea.error {
+    border-color: var(--accent-red);
+}
+
+input.success,
+select.success,
+textarea.success {
+    border-color: var(--status-ready);
+}
+
+input:disabled,
+select:disabled,
+textarea:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background: var(--bg-tertiary);
+}
+
+/* ===== TEXTAREA ===== */
+textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+/* ===== SEARCH INPUT ===== */
+.search-input {
+    position: relative;
+}
+
+.search-input input {
+    padding-left: var(--spacing-xl);
+    padding-right: var(--spacing-xl);
+}
+
+.search-input .search-icon {
+    position: absolute;
+    left: var(--spacing-sm);
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+}
+
+.search-input .clear-btn {
+    position: absolute;
+    right: var(--spacing-sm);
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 2px;
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+}
+
+.search-input input:not(:placeholder-shown) + .clear-btn {
+    opacity: 1;
+}
+
+.search-input .clear-btn:hover {
+    color: var(--text-main);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 600px) {
+    .form-row.equal,
+    .form-row.triple {
+        grid-template-columns: 1fr;
+    }
+}

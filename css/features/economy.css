@@ -1,0 +1,794 @@
+/* ========================================
+   TF2 MANN CO. FORGE - ECONOMY
+   Estilos de la sección Economía Real
+   ======================================== */
+
+/* ===== ECONOMÍA REAL ===== */
+.real-economy-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.economy-config-card,
+.economy-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-inactive);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+.economy-config-card {
+    border-left: 4px solid var(--accent-blu);
+}
+
+.config-header,
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md);
+    background: var(--bg-tertiary);
+    border-bottom: 1px solid var(--border-inactive);
+}
+
+.config-icon,
+.card-icon {
+    font-size: 1.3rem;
+}
+
+.card-icon-img {
+    width: 24px;
+    height: 24px;
+}
+
+.config-header h4,
+.card-header h4 {
+    margin: 0;
+    font-size: 1rem;
+    flex: 1;
+}
+
+.config-body,
+.card-body {
+    padding: var(--spacing-md);
+}
+
+.config-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+}
+
+.config-row:last-child {
+    margin-bottom: 0;
+}
+
+.config-row label {
+    min-width: 150px;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.config-row select,
+.config-row input {
+    flex: 1;
+    min-width: 150px;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-inactive);
+    border-radius: var(--radius-sm);
+    color: var(--text-main);
+    font-size: 0.9rem;
+}
+
+.config-row select:focus,
+.config-row input:focus {
+    outline: none;
+    border-color: var(--accent-gold);
+}
+
+.rate-hint {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    width: 100%;
+    margin-top: 4px;
+}
+
+/* ===== STEAM WALLET CARD ===== */
+.steam-wallet-card {
+    border-left: 4px solid #1b2838;
+}
+
+.wallet-input-group {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+}
+
+.wallet-input-group label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.wallet-input-group input {
+    flex: 1;
+    max-width: 150px;
+    padding: var(--spacing-sm);
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-inactive);
+    border-radius: var(--radius-sm);
+    color: var(--text-main);
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-align: right;
+}
+
+.wallet-input-group input:focus {
+    outline: none;
+    border-color: var(--accent-gold);
+}
+
+.wallet-conversions,
+.key-conversions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: var(--spacing-sm);
+}
+
+.conversion-display {
+    background: var(--bg-tertiary);
+    padding: var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.conv-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.conv-value {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--accent-gold);
+}
+
+/* ===== KEY PRICES CONTAINER ===== */
+.key-prices-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.key-price-card.community {
+    border-left: 4px solid var(--accent-blu);
+}
+
+.key-price-card.mannco {
+    border-left: 4px solid var(--accent-red);
+}
+
+.price-badge {
+    padding: 2px 8px;
+    border-radius: var(--radius-xs);
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.price-badge.fluctuates {
+    background: rgba(255, 152, 0, 0.2);
+    color: #FF9800;
+}
+
+.price-badge.stable {
+    background: rgba(76, 175, 80, 0.2);
+    color: var(--status-ready);
+}
+
+.key-input-group {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+}
+
+.key-input-group label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.key-input-group input {
+    width: 100px;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-inactive);
+    border-radius: var(--radius-sm);
+    color: var(--text-main);
+    font-size: 1rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.key-input-group input:focus {
+    outline: none;
+    border-color: var(--accent-gold);
+}
+
+.price-note {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: var(--spacing-sm);
+    padding-top: var(--spacing-sm);
+    border-top: 1px solid var(--border-inactive);
+}
+
+/* ===== COMPARISON CARD ===== */
+.comparison-card {
+    border-left: 4px solid var(--accent-gold);
+}
+
+.comparison-result {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.comparison-similar,
+.comparison-mannco,
+.comparison-community {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-sm);
+}
+
+.comparison-similar {
+    background: rgba(100, 100, 100, 0.1);
+    border-left: 3px solid var(--text-muted);
+}
+
+.comparison-mannco {
+    background: rgba(255, 64, 64, 0.1);
+    border-left: 3px solid var(--accent-red);
+}
+
+.comparison-community {
+    background: rgba(40, 98, 200, 0.1);
+    border-left: 3px solid var(--accent-blu);
+}
+
+.comp-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.comp-text strong {
+    display: block;
+    font-size: 1.1rem;
+    margin-bottom: var(--spacing-xs);
+}
+
+.comp-text p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.comp-detail {
+    font-size: 0.8rem !important;
+    color: var(--text-muted) !important;
+    margin-top: var(--spacing-xs) !important;
+}
+
+.wallet-info {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    background: rgba(255, 215, 0, 0.1);
+    border-radius: var(--radius-sm);
+    border-left: 3px solid var(--accent-gold);
+}
+
+.wallet-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.wallet-text strong {
+    display: block;
+    margin-bottom: var(--spacing-xs);
+}
+
+.wallet-text p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.wallet-leftover {
+    font-size: 0.8rem !important;
+    color: var(--text-muted) !important;
+    margin-top: 4px !important;
+}
+
+/* ===== MANN CO. STORE CARD ===== */
+.mannco-store-card {
+    border-left: 4px solid var(--accent-red);
+}
+
+.mannco-note {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm);
+    background: rgba(255, 152, 0, 0.1);
+    border-radius: var(--radius-sm);
+    margin-bottom: var(--spacing-md);
+    font-size: 0.85rem;
+}
+
+.mannco-note span {
+    font-size: 1.2rem;
+}
+
+.mannco-note p {
+    margin: 0;
+    color: var(--text-secondary);
+}
+
+/* ===== COMMUNITY STORES SECTION ===== */
+.community-stores-section {
+    margin-top: var(--spacing-md);
+}
+
+.community-stores-section .section-subtitle {
+    margin-bottom: var(--spacing-xs);
+}
+
+.stores-hint {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-md);
+}
+
+.stores-key-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.store-key-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-inactive);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    transition: all var(--transition-fast);
+}
+
+.store-key-card:hover {
+    border-color: var(--accent-gold);
+}
+
+.store-key-card.steam-market {
+    border-left: 4px solid #1b2838;
+}
+
+.store-key-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md);
+    background: var(--bg-tertiary);
+    border-bottom: 1px solid var(--border-inactive);
+}
+
+.store-emoji {
+    font-size: 1.5rem;
+}
+
+.store-key-info {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.store-key-info h4 {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.store-currency-badge {
+    padding: 2px 8px;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-xs);
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+}
+
+.store-currency-badge.usd {
+    background: rgba(76, 175, 80, 0.2);
+    color: var(--status-ready);
+}
+
+.store-currency-badge.local {
+    background: rgba(255, 215, 0, 0.2);
+    color: var(--accent-gold);
+}
+
+.store-key-prices {
+    padding: var(--spacing-md);
+}
+
+.price-row {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+}
+
+.price-row:last-child {
+    margin-bottom: 0;
+}
+
+.price-row label {
+    min-width: 100px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.price-row input {
+    width: 80px;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-inactive);
+    border-radius: var(--radius-xs);
+    color: var(--text-main);
+    font-size: 0.9rem;
+    text-align: right;
+}
+
+.price-row input:focus {
+    outline: none;
+    border-color: var(--accent-gold);
+}
+
+.price-row.buy input {
+    border-left: 3px solid var(--accent-red);
+}
+
+.price-row.sell input {
+    border-left: 3px solid var(--status-ready);
+}
+
+.price-row.disabled input {
+    background: var(--bg-secondary);
+    color: var(--text-muted);
+    cursor: not-allowed;
+}
+
+.currency-label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    min-width: 30px;
+}
+
+.store-key-converted {
+    padding: 0 var(--spacing-md) var(--spacing-md);
+}
+
+.converted-prices {
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-sm);
+    padding: var(--spacing-sm);
+}
+
+.conv-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    padding: 2px 0;
+}
+
+.conv-type {
+    color: var(--text-muted);
+}
+
+.conv-values {
+    color: var(--text-secondary);
+}
+
+.store-note {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    padding: 0 var(--spacing-md) var(--spacing-sm);
+    margin: 0;
+}
+
+/* ===== BEST OPTION SECTION ===== */
+.best-option-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+}
+
+.best-option-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-inactive);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+.best-option-card.buy {
+    border-left: 4px solid var(--accent-red);
+}
+
+.best-option-card.sell {
+    border-left: 4px solid var(--status-ready);
+}
+
+.best-option-card .card-header {
+    background: var(--bg-tertiary);
+}
+
+.best-option-card.buy .card-header {
+    border-bottom: 2px solid var(--accent-red);
+}
+
+.best-option-card.sell .card-header {
+    border-bottom: 2px solid var(--status-ready);
+}
+
+.best-option-result {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.best-winner {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    background: rgba(255, 64, 64, 0.1);
+    border-radius: var(--radius-sm);
+    border-left: 3px solid var(--accent-red);
+}
+
+.best-winner.sell {
+    background: rgba(76, 175, 80, 0.1);
+    border-left-color: var(--status-ready);
+}
+
+.winner-emoji {
+    font-size: 2rem;
+}
+
+.winner-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.winner-info strong {
+    font-size: 1.1rem;
+}
+
+.winner-price {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--accent-gold);
+}
+
+.winner-ref {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.savings-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-sm);
+    background: rgba(76, 175, 80, 0.1);
+    border-radius: var(--radius-sm);
+}
+
+.savings-label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.savings-amount {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--status-ready);
+}
+
+.all-options {
+    padding-top: var(--spacing-sm);
+    border-top: 1px solid var(--border-inactive);
+}
+
+.options-label {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: var(--spacing-sm);
+}
+
+.option-row {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-xs);
+    font-size: 0.85rem;
+}
+
+.option-row.best {
+    background: rgba(255, 215, 0, 0.1);
+    border-radius: var(--radius-xs);
+}
+
+.opt-rank {
+    width: 25px;
+    font-weight: 700;
+    color: var(--text-muted);
+}
+
+.option-row.best .opt-rank {
+    color: var(--accent-gold);
+}
+
+.opt-name {
+    flex: 1;
+}
+
+.opt-price {
+    font-weight: 600;
+}
+
+.no-options {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md);
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.no-options span {
+    font-size: 1.5rem;
+}
+
+/* ===== PROFITABILITY CARD ===== */
+.profitability-card {
+    margin-top: var(--spacing-lg);
+    border-left: 4px solid var(--accent-gold);
+}
+
+.profitability-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.profit-advice {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-sm);
+}
+
+.profit-advice.positive {
+    background: rgba(76, 175, 80, 0.1);
+    border-left: 3px solid var(--status-ready);
+}
+
+.profit-advice.neutral {
+    background: rgba(100, 100, 100, 0.1);
+    border-left: 3px solid var(--text-muted);
+}
+
+.profit-advice.negative {
+    background: rgba(255, 64, 64, 0.1);
+    border-left: 3px solid var(--accent-red);
+}
+
+.advice-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.advice-text {
+    flex: 1;
+}
+
+.advice-text strong {
+    display: block;
+    font-size: 1.1rem;
+    margin-bottom: var(--spacing-xs);
+}
+
+.advice-text p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.profit-detail {
+    margin-top: var(--spacing-xs) !important;
+    font-weight: 600;
+    color: var(--status-ready) !important;
+}
+
+.loss-detail {
+    margin-top: var(--spacing-xs) !important;
+    font-style: italic;
+    color: var(--text-muted) !important;
+}
+
+.wallet-profit-info {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    background: rgba(255, 215, 0, 0.1);
+    border-radius: var(--radius-sm);
+    border-left: 3px solid var(--accent-gold);
+}
+
+/* ===== ECONOMY RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .stores-key-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .best-option-section {
+        grid-template-columns: 1fr;
+    }
+    
+    .price-row {
+        flex-wrap: wrap;
+    }
+    
+    .price-row label {
+        width: 100%;
+        margin-bottom: 4px;
+    }
+    
+    .key-prices-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .config-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .config-row select,
+    .config-row input {
+        width: 100%;
+    }
+    
+    .wallet-input-group {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .wallet-input-group input {
+        width: 100%;
+        max-width: none;
+    }
+}

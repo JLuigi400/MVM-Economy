@@ -1,0 +1,645 @@
+/* =============================================
+   PROFITABILITY.CSS - Calculadora de Rentabilidad
+   Estilos para análisis de ROI y ganancias
+   ============================================= */
+
+/* ===== PROFITABILITY SECTION ===== */
+.profitability-section {
+    margin-top: var(--spacing-2xl);
+    padding-top: var(--spacing-xl);
+    border-top: 2px solid var(--border-color);
+}
+
+.profitability-header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.profitability-header h2 {
+    font-size: 1.8rem;
+    font-family: 'Russo One', sans-serif;
+    color: var(--text-primary);
+    margin: 0 0 var(--spacing-xs) 0;
+}
+
+.profitability-subtitle {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+.profitability-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
+}
+
+/* ===== PROFIT CARD ===== */
+.profit-card {
+    background: var(--bg-secondary);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    transition: all var(--transition-normal);
+}
+
+.profit-card:hover {
+    border-color: var(--accent-primary);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.profit-card .card-header {
+    background: var(--bg-tertiary);
+    padding: var(--spacing-md) var(--spacing-lg);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.profit-card .card-header h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-family: 'Russo One', sans-serif;
+}
+
+.profit-card .card-hint {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+/* ===== FORMULARIO DE CALCULADORA ===== */
+.profit-form {
+    padding: var(--spacing-lg);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.profit-form-row {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+}
+
+.profit-field {
+    flex: 1;
+}
+
+.profit-field label {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: var(--spacing-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.profit-field select {
+    width: 100%;
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    font-size: 0.95rem;
+}
+
+.profit-field select:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+}
+
+.profit-field select:hover {
+    border-color: var(--accent-primary);
+    background: rgba(255, 202, 40, 0.05);
+}
+
+/* ===== TOGGLE DE FUENTE DE PRECIOS ===== */
+.profit-source-toggle {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+}
+
+.toggle-label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.toggle-buttons {
+    display: flex;
+    gap: 0;
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+
+.toggle-btn {
+    padding: var(--spacing-xs) var(--spacing-md);
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all var(--transition-fast);
+}
+
+.toggle-btn:hover:not(.active) {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-1px);
+}
+
+.toggle-btn.active {
+    background: var(--accent-primary);
+    color: #000;
+    font-weight: 600;
+}
+
+/* ===== RESULTADOS DE RENTABILIDAD ===== */
+.profit-results {
+    padding: var(--spacing-lg);
+}
+
+.profit-result-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-md);
+    border-bottom: 1px dashed var(--border-color);
+}
+
+.result-combo-preview {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.combo-preview-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    transition: all var(--transition-fast);
+}
+
+.combo-preview-item:hover .preview-img {
+    transform: scale(1.15);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.combo-preview-item .preview-img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    border: 2px solid;
+    border-radius: var(--radius-sm);
+    padding: 4px;
+    background: var(--bg-tertiary);
+}
+
+.combo-preview-item span {
+    font-size: 0.7rem;
+    text-align: center;
+}
+
+.combo-plus {
+    font-size: 1.2rem;
+    color: var(--accent-primary);
+    font-weight: bold;
+}
+
+.result-tier-badge {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    background: var(--bg-tertiary);
+    padding: var(--spacing-xs) var(--spacing-md);
+    border-radius: var(--radius-sm);
+    cursor: default;
+    transition: all var(--transition-fast);
+}
+
+.result-tier-badge:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.result-tier-badge .tier-icon {
+    font-size: 1.2rem;
+}
+
+.result-tier-badge .tier-label {
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* ===== BREAKDOWN DE COSTOS Y PRECIOS ===== */
+.profit-breakdown {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.breakdown-section {
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-sm);
+    padding: var(--spacing-md);
+}
+
+.breakdown-section h4 {
+    margin: 0 0 var(--spacing-md) 0;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.breakdown-items {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.breakdown-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    padding: var(--spacing-xs);
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-fast);
+    cursor: default;
+}
+
+.breakdown-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateX(3px);
+}
+
+.breakdown-item .item-name {
+    color: var(--text-secondary);
+}
+
+.breakdown-item .item-price {
+    color: var(--text-primary);
+    font-family: 'Roboto Mono', monospace;
+}
+
+.breakdown-item.estimated .item-name {
+    color: var(--text-muted);
+}
+
+.breakdown-item.estimated .item-price {
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+.breakdown-item.custom .item-name {
+    color: var(--status-ready);
+}
+
+.breakdown-item.custom .item-price {
+    color: var(--status-ready);
+    font-weight: 600;
+}
+
+.breakdown-total {
+    display: flex;
+    justify-content: space-between;
+    padding-top: var(--spacing-sm);
+    margin-top: var(--spacing-sm);
+    border-top: 1px solid var(--border-color);
+    font-weight: 600;
+}
+
+.breakdown-total .total-value {
+    font-family: 'Roboto Mono', monospace;
+}
+
+.breakdown-total .total-value.positive {
+    color: var(--status-ready);
+}
+
+/* Filas de precio de venta */
+.sale-price-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    margin-bottom: var(--spacing-xs);
+}
+
+.sale-price-row .sale-label {
+    color: var(--text-secondary);
+}
+
+.sale-price-row .sale-value {
+    font-family: 'Roboto Mono', monospace;
+}
+
+.sale-price-row.premium .sale-value {
+    color: var(--accent-primary);
+}
+
+/* ===== ROI CARD ===== */
+.profit-roi-card {
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg);
+    border: 2px solid var(--border-color);
+    transition: all var(--transition-normal);
+    cursor: default;
+}
+
+.profit-roi-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.profit-roi-card.excellent {
+    border-color: #FFD700;
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, transparent 100%);
+}
+
+.profit-roi-card.good {
+    border-color: var(--status-ready);
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.1) 0%, transparent 100%);
+}
+
+.profit-roi-card.neutral {
+    border-color: var(--accent-primary);
+    background: linear-gradient(135deg, rgba(255, 202, 40, 0.1) 0%, transparent 100%);
+}
+
+.profit-roi-card.negative {
+    border-color: var(--status-missing);
+    background: linear-gradient(135deg, rgba(244, 67, 54, 0.1) 0%, transparent 100%);
+}
+
+.roi-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-md);
+}
+
+.roi-label {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.roi-value {
+    font-size: 2rem;
+    font-weight: 700;
+    font-family: 'Russo One', sans-serif;
+}
+
+.roi-value.excellent {
+    color: #FFD700;
+    animation: subtlePulse 2s ease-in-out infinite;
+}
+
+.roi-value.good {
+    color: var(--status-ready);
+}
+
+.roi-value.neutral {
+    color: var(--accent-primary);
+}
+
+.roi-value.negative {
+    color: var(--status-missing);
+}
+
+@keyframes subtlePulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+}
+
+.roi-details {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-sm);
+}
+
+.roi-detail {
+    text-align: center;
+}
+
+.roi-detail .detail-label {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+.roi-detail .detail-value {
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 600;
+}
+
+.roi-detail .detail-value.positive {
+    color: var(--status-ready);
+}
+
+.roi-detail .detail-value.negative {
+    color: var(--status-missing);
+}
+
+/* ===== INDICADOR DE FUENTE DE PRECIOS ===== */
+.source-wrapper {
+    margin-top: var(--spacing-sm);
+}
+
+.source-indicator {
+    font-size: 0.75rem;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    text-align: center;
+}
+
+.source-indicator.custom {
+    background: rgba(76, 175, 80, 0.1);
+    color: var(--status-ready);
+    border: 1px dashed var(--status-ready);
+}
+
+.source-indicator.estimated {
+    background: rgba(255, 202, 40, 0.1);
+    color: var(--accent-primary);
+    border: 1px dashed var(--accent-primary);
+}
+
+/* ===== LOCAL PRICE DISPLAY ===== */
+.local-price {
+    font-size: 0.75rem;
+    color: var(--accent-primary);
+    font-weight: normal;
+    margin-left: 4px;
+    opacity: 0.9;
+}
+
+.breakdown-total .local-price {
+    display: block;
+    font-size: 0.7rem;
+    margin-top: 2px;
+}
+
+/* ===== ROI SECTION EN PROYECTOS ===== */
+.roi-section {
+    margin: var(--spacing-md) 0;
+    padding: var(--spacing-md);
+    background: var(--bg-input);
+    border-radius: var(--radius-sm);
+}
+
+.roi-section h4 {
+    margin: 0 0 var(--spacing-sm);
+    font-size: 0.9rem;
+    color: var(--text-main);
+}
+
+.roi-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-sm);
+    padding: var(--spacing-md);
+    border-left: 4px solid var(--accent-green);
+}
+
+.roi-card.positive { border-color: #4CAF50; }
+.roi-card.neutral { border-color: #FF9800; }
+.roi-card.negative { border-color: #f44336; }
+
+.roi-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-sm);
+}
+
+.roi-breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    padding-top: var(--spacing-sm);
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.roi-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.roi-item.highlight {
+    padding-top: var(--spacing-xs);
+    border-top: 1px dashed rgba(255,255,255,0.1);
+    font-weight: 600;
+}
+
+.roi-item .cost { color: #f44336; }
+.roi-item .revenue { color: var(--text-main); }
+.roi-item .profit { color: #4CAF50; }
+.roi-item .loss { color: #f44336; }
+
+.breakeven-note {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-sm);
+    padding: var(--spacing-sm);
+    background: rgba(255,152,0,0.1);
+    border-radius: var(--radius-xs);
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.breakeven-note strong {
+    color: #FF9800;
+}
+
+/* Free Kit Badge */
+.roi-section.free-kit {
+    background: rgba(76, 175, 80, 0.1);
+    border-left: 4px solid #4CAF50;
+}
+
+.free-kit-badge {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: rgba(76, 175, 80, 0.2);
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    color: #4CAF50;
+}
+
+.free-kit-badge .badge-icon {
+    font-size: 1.2rem;
+}
+
+.free-kit-note {
+    margin-top: var(--spacing-sm);
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+/* ===== CURRENCY TABS ===== */
+.currency-tabs {
+    display: flex;
+    gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-sm);
+    padding: var(--spacing-xs);
+    background: var(--bg-input);
+    border-radius: var(--radius-sm);
+}
+
+.currency-tab {
+    flex: 1;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background: transparent;
+    border: none;
+    border-radius: var(--radius-xs);
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.currency-tab:hover {
+    background: rgba(255,255,255,0.05);
+    color: var(--text-main);
+}
+
+.currency-tab.active {
+    background: var(--accent-orange);
+    color: #fff;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .profitability-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .profit-breakdown {
+        grid-template-columns: 1fr;
+    }
+    
+    .roi-details {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 500px) {
+    .roi-details {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

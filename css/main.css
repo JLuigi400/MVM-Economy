@@ -1,0 +1,112 @@
+/* =============================================
+   MAIN.CSS - Archivo Principal de Estilos
+   La Forja MvM - Dashboard de Economía TF2
+   
+   Este archivo importa todos los módulos CSS
+   organizados por categoría
+   ============================================= */
+
+/* ===== BASE ===== */
+/* Variables CSS y tokens de diseño */
+@import url('base/variables.css');
+
+/* Reset y estilos base del body */
+@import url('base/reset.css');
+
+/* ===== LAYOUT ===== */
+/* Estructura del header principal */
+@import url('layout/header.css');
+
+/* Sistema de navegación por tabs */
+@import url('layout/navigation.css');
+
+/* Contenedores principales */
+@import url('layout/containers.css');
+
+/* Footer de la aplicación */
+@import url('layout/footer.css');
+
+/* ===== COMPONENTS ===== */
+/* Botones reutilizables */
+@import url('components/buttons.css');
+
+/* Formularios e inputs */
+@import url('components/forms.css');
+
+/* ===== UI ===== */
+/* Sistema de modales */
+@import url('ui/modals.css');
+
+/* Notificaciones toast */
+@import url('ui/toasts.css');
+
+/* Estilos de scrollbar */
+@import url('ui/scrollbar.css');
+
+/* ===== FEATURES ===== */
+/* Dashboard y resumen principal */
+@import url('features/dashboard.css');
+
+/* Mochila e inventario */
+@import url('features/backpack.css');
+
+/* Sección de economía real */
+@import url('features/economy.css');
+
+/* La Forja - sistema de crafting */
+@import url('features/forge.css');
+
+/* Mis Kits completados */
+@import url('features/kits.css');
+
+/* Calculadora de costos */
+@import url('features/calculator.css');
+
+/* Mercado y precios de comunidad */
+@import url('features/market.css');
+
+/* Sistema de favoritos */
+@import url('features/favorites.css');
+
+/* Historial de ventas */
+@import url('features/history.css');
+
+/* Calculadora de rentabilidad */
+@import url('features/profitability.css');
+
+/* =============================================
+   NOTA: Los estilos restantes del archivo 
+   original styles.css que no han sido 
+   modularizados se mantienen temporalmente
+   en styles.css hasta completar la migración.
+   
+   Estructura de carpetas:
+   css/
+   ├── main.css (este archivo)
+   ├── base/
+   │   ├── variables.css
+   │   └── reset.css
+   ├── layout/
+   │   ├── header.css
+   │   ├── navigation.css
+   │   ├── containers.css
+   │   └── footer.css
+   ├── components/
+   │   ├── buttons.css
+   │   └── forms.css
+   ├── features/
+   │   ├── dashboard.css
+   │   ├── backpack.css
+   │   ├── economy.css
+   │   ├── forge.css
+   │   ├── kits.css
+   │   ├── calculator.css
+   │   ├── market.css
+   │   ├── favorites.css
+   │   ├── history.css
+   │   └── profitability.css
+   └── ui/
+       ├── modals.css
+       ├── toasts.css
+       └── scrollbar.css
+   ============================================= */

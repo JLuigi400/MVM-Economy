@@ -1,0 +1,108 @@
+/* ========================================
+   TF2 MANN CO. FORGE - TOASTS
+   Notificaciones toast y alertas
+   ======================================== */
+
+/* ===== TOAST NOTIFICATIONS ===== */
+.toast-container {
+    position: fixed;
+    bottom: var(--spacing-lg);
+    right: var(--spacing-lg);
+    z-index: 1001;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.toast {
+    background: var(--bg-card);
+    border-radius: var(--radius-sm);
+    padding: var(--spacing-md) var(--spacing-lg);
+    box-shadow: var(--shadow-lg);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    animation: toastSlide 0.3s ease;
+    border-left: 4px solid var(--accent-blu);
+}
+
+.toast.success {
+    border-left-color: var(--status-ready);
+}
+
+.toast.error {
+    border-left-color: var(--accent-red);
+}
+
+.toast.warning {
+    border-left-color: var(--status-pending);
+}
+
+@keyframes toastSlide {
+    from { opacity: 0; transform: translateX(100px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.toast-icon {
+    font-size: 1.2rem;
+}
+
+.toast-message {
+    color: var(--text-main);
+    font-weight: 500;
+}
+
+/* ===== ALERT BOXES ===== */
+.alert {
+    padding: var(--spacing-md);
+    border-radius: var(--radius-sm);
+    margin-bottom: var(--spacing-md);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.alert-info {
+    background: rgba(33, 150, 243, 0.1);
+    border-left: 3px solid #2196F3;
+    color: #2196F3;
+}
+
+.alert-success {
+    background: rgba(76, 175, 80, 0.1);
+    border-left: 3px solid #4CAF50;
+    color: #4CAF50;
+}
+
+.alert-warning {
+    background: rgba(255, 152, 0, 0.1);
+    border-left: 3px solid #FF9800;
+    color: #FF9800;
+}
+
+.alert-error {
+    background: rgba(244, 67, 54, 0.1);
+    border-left: 3px solid #F44336;
+    color: #F44336;
+}
+
+.alert-icon {
+    font-size: 1.2rem;
+}
+
+.alert-text {
+    flex: 1;
+}
+
+.alert-close {
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity var(--transition-fast);
+}
+
+.alert-close:hover {
+    opacity: 1;
+}

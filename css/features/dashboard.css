@@ -1,0 +1,299 @@
+/* ========================================
+   TF2 MANN CO. FORGE - DASHBOARD
+   Estilos del dashboard y resumen
+   ======================================== */
+
+/* ===== TARJETAS RESUMEN ===== */
+.summary-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-inactive);
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.summary-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.card-header {
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px solid var(--border-inactive);
+}
+
+.card-header h3 {
+    font-size: 1.1rem;
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+/* Currency Display */
+.currency-display {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.currency-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-sm);
+    background: var(--bg-input);
+    border-radius: var(--radius-sm);
+}
+
+.currency-icon {
+    font-size: 1.2rem;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-main);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+}
+
+.currency-icon img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5));
+}
+
+.currency-icon.scrap { border: 1px solid #8B4513; }
+.currency-icon.rec { border: 1px solid #708090; }
+.currency-icon.ref { border: 1px solid var(--god-tier); }
+.currency-icon.key { border: 1px solid var(--god-tier); }
+
+.currency-name {
+    flex: 1;
+    color: var(--text-secondary);
+}
+
+.currency-count {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--text-main);
+    min-width: 40px;
+    text-align: right;
+}
+
+/* Projects Summary */
+.projects-summary {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.project-stat {
+    padding: var(--spacing-md);
+}
+
+.project-count {
+    display: block;
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--accent-blu);
+}
+
+.project-stat.ready .project-count {
+    color: var(--status-ready);
+}
+
+.project-label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* ===== ROBOT PARTS GRID ===== */
+.robot-parts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.part-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    border: 1px solid var(--border-inactive);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    transition: all var(--transition-normal);
+}
+
+.part-card:hover {
+    border-color: var(--accent-blu);
+    background: var(--bg-card-hover);
+    transform: translateY(-2px);
+}
+
+/* Header - Nombre */
+.part-card .part-header {
+    width: 100%;
+    text-align: center;
+    padding-bottom: var(--spacing-xs);
+    border-bottom: 1px solid var(--border-inactive);
+}
+
+.part-card .part-name {
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--text-main);
+}
+
+/* Body - Imagen (3/4) + Contador (1/4) */
+.part-card .part-body {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: var(--spacing-sm);
+}
+
+.part-card .part-image {
+    flex: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60px;
+}
+
+.part-card .part-image img {
+    width: 52px;
+    height: 52px;
+    object-fit: contain;
+}
+
+.part-card .part-count-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.part-card .part-count {
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: var(--accent-blu);
+    text-align: center;
+}
+
+.part-card .part-count.zero {
+    color: var(--text-muted);
+    font-size: 1.4rem;
+}
+
+/* Footer - Categoría */
+.part-card .part-footer {
+    width: 100%;
+    text-align: center;
+    padding-top: var(--spacing-xs);
+    border-top: 1px solid var(--border-inactive);
+}
+
+.part-card .part-tier {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* Legacy styles - mantener compatibilidad */
+.part-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+/* ============================================
+   DASHBOARD PARTS - Tarjetas verticales
+   ============================================ */
+
+.part-card.dashboard-card {
+    display: flex;
+    flex-direction: column;
+    padding: var(--spacing-sm);
+    gap: 0;
+}
+
+/* Header - Nombre corto arriba */
+.part-card.dashboard-card .dash-card-header {
+    width: 100%;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-bottom: 1px solid var(--border-inactive);
+    text-align: center;
+}
+
+.part-card.dashboard-card .dash-card-name {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-main);
+    line-height: 1.2;
+}
+
+/* Body - Imagen (75%) + Contador (25%) lado a lado */
+.part-card.dashboard-card .dash-card-body {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    padding: var(--spacing-sm) 0;
+}
+
+.part-card.dashboard-card .dash-card-image {
+    flex: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 1px solid var(--border-inactive);
+    padding: var(--spacing-xs);
+}
+
+.part-card.dashboard-card .dash-card-image img {
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+}
+
+.part-card.dashboard-card .dash-card-counter {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: var(--spacing-xs);
+}
+
+.part-card.dashboard-card .dash-count {
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: var(--accent-blu);
+}
+
+.part-card.dashboard-card .dash-count.zero {
+    color: var(--text-muted);
+    font-size: 1.5rem;
+}
+
+/* Footer - Categoría con color abajo */
+.part-card.dashboard-card .dash-card-footer {
+    width: 100%;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-top: 1px solid var(--border-inactive);
+    text-align: center;
+}
+
+.part-card.dashboard-card .dash-card-category {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}

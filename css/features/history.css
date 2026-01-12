@@ -1,0 +1,614 @@
+/* =============================================
+   HISTORY.CSS - Historial de Ventas
+   Estilos para registro y visualización del historial
+   ============================================= */
+
+/* ===== SALES HISTORY SECTION ===== */
+.sales-history-section {
+    margin-top: var(--spacing-xl);
+    padding-top: var(--spacing-xl);
+    border-top: 2px solid var(--border-color);
+}
+
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--spacing-lg);
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+}
+
+.history-title h2 {
+    margin: 0;
+    color: var(--accent-gold);
+}
+
+.history-subtitle {
+    margin: var(--spacing-xs) 0 0;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.history-actions {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.history-actions button {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-clear-history {
+    background: var(--bg-tertiary);
+    color: var(--text-secondary);
+}
+
+.btn-clear-history:hover {
+    background: rgba(255, 77, 77, 0.2);
+    color: var(--accent-red);
+}
+
+.btn-export-history {
+    background: rgba(63, 209, 139, 0.6); /* verde menta menos saturado */
+    color: #e0e0e0;
+}
+
+.btn-export-history:hover {
+    filter: brightness(1.1);
+    transform: translateY(-2px);
+}
+
+/* ===== STATS GRID ===== */
+.history-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.history-stat-card {
+    background: var(--bg-secondary);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    border: 1px solid var(--border-color);
+    transition: all 0.2s ease;
+}
+
+.history-stat-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent-primary);
+}
+
+.history-stat-card .stat-icon {
+    font-size: 2rem;
+}
+
+.history-stat-card .stat-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.history-stat-card .stat-value {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.2;
+}
+
+.history-stat-card .stat-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.history-stat-card .stat-local {
+    font-size: 0.8rem;
+    color: var(--accent-primary);
+}
+
+.history-stat-card .stat-detail {
+    font-size: 0.8rem;
+    color: var(--status-ready);
+}
+
+.history-stat-card.total-profit .stat-value {
+    color: var(--status-ready);
+}
+
+.history-stat-card.avg-roi .stat-value {
+    color: var(--accent-primary);
+}
+
+/* ===== HISTORY LIST ===== */
+.history-list-container {
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.history-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.empty-history {
+    text-align: center;
+    padding: var(--spacing-xl);
+    color: var(--text-muted);
+}
+
+.empty-history .empty-icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: var(--spacing-md);
+}
+
+.empty-history .empty-hint {
+    font-size: 0.85rem;
+    opacity: 0.7;
+}
+
+/* ===== HISTORY ENTRY ===== */
+.history-entry {
+    background: var(--bg-secondary);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    border-left: 4px solid var(--border-color);
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.history-entry:hover {
+    transform: translateX(4px);
+    border-left-color: var(--accent-primary);
+}
+
+.history-entry.professional {
+    border-left-color: var(--accent-gold);
+}
+
+.history-entry.specialized {
+    border-left-color: #9370DB;
+}
+
+.history-entry-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+}
+
+.history-entry-info {
+    flex: 1;
+}
+
+.history-entry-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-xs);
+}
+
+.history-weapon {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.history-entry-combo {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-size: 0.85rem;
+    margin-bottom: var(--spacing-xs);
+}
+
+.history-entry-combo .separator {
+    color: var(--text-muted);
+}
+
+.killstreaker-name {
+    color: var(--accent-gold);
+}
+
+.history-entry-date {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.buyer-info {
+    color: var(--accent-primary);
+    margin-left: var(--spacing-sm);
+}
+
+.history-entry-numbers {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-xs) var(--spacing-md);
+    min-width: 200px;
+}
+
+.number-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+}
+
+.number-row .label {
+    color: var(--text-muted);
+}
+
+.number-row .value {
+    font-weight: 500;
+}
+
+.number-row.profit .value.positive {
+    color: var(--status-ready);
+}
+
+.number-row.profit .value.negative {
+    color: var(--accent-red);
+}
+
+.number-row.roi .value.positive {
+    color: var(--accent-primary);
+}
+
+.number-row.roi .value.negative {
+    color: var(--accent-red);
+}
+
+.history-entry-notes {
+    margin-top: var(--spacing-sm);
+    padding-top: var(--spacing-sm);
+    border-top: 1px solid var(--border-color);
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+.history-entry-actions {
+    position: absolute;
+    top: var(--spacing-sm);
+    right: var(--spacing-sm);
+    display: flex;
+    gap: var(--spacing-xs);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.history-entry:hover .history-entry-actions {
+    opacity: 1;
+}
+
+.btn-edit-history,
+.btn-delete-history {
+    padding: 4px 8px;
+    border: none;
+    border-radius: var(--radius-xs);
+    background: var(--bg-tertiary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-edit-history:hover {
+    background: var(--accent-primary);
+}
+
+.btn-delete-history:hover {
+    background: var(--accent-red);
+}
+
+/* ===== SALE REGISTRATION MODAL ===== */
+.sale-registration-modal {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.sale-registration-modal h2 {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+    color: var(--accent-gold);
+}
+
+.sale-project-summary {
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.sale-project-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+}
+
+.sale-project-header h3 {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.sale-project-details {
+    display: grid;
+    gap: var(--spacing-xs);
+}
+
+.sale-detail {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+}
+
+.sale-detail .label {
+    color: var(--text-muted);
+}
+
+.sale-detail .value {
+    font-weight: 500;
+}
+
+.sale-detail.suggested {
+    border-top: 1px solid var(--border-color);
+    padding-top: var(--spacing-sm);
+    margin-top: var(--spacing-xs);
+}
+
+.sale-detail.suggested .value {
+    color: var(--accent-primary);
+}
+
+.local-hint {
+    font-size: 0.75rem;
+    opacity: 0.8;
+}
+
+.sale-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.sale-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.sale-form-group label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.sale-form-group input,
+.sale-form-group textarea {
+    padding: var(--spacing-sm);
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    font-size: 0.9rem;
+}
+
+.sale-form-group input:focus,
+.sale-form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+}
+
+.sale-local-preview {
+    font-size: 0.8rem;
+    color: var(--accent-primary);
+    text-align: right;
+}
+
+/* ===== PROFIT PREVIEW ===== */
+.sale-profit-preview {
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.profit-preview-header {
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-secondary);
+}
+
+.profit-preview-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-sm);
+}
+
+.profit-preview-item {
+    text-align: center;
+    padding: var(--spacing-sm);
+    background: var(--bg-secondary);
+    border-radius: var(--radius-sm);
+}
+
+.profit-preview-item .label {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    margin-bottom: 2px;
+}
+
+.profit-preview-item .value {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.profit-preview-item .value.positive {
+    color: var(--status-ready);
+}
+
+.profit-preview-item .value.negative {
+    color: var(--accent-red);
+}
+
+.profit-preview-item.highlight {
+    background: rgba(0, 255, 136, 0.1);
+    border: 1px solid var(--status-ready);
+}
+
+.sale-actions {
+    display: flex;
+    gap: var(--spacing-sm);
+    justify-content: flex-end;
+}
+
+.sale-actions button {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-skip-sale {
+    background: var(--bg-tertiary);
+    color: var(--text-secondary);
+}
+
+.btn-skip-sale:hover {
+    background: var(--bg-hover);
+}
+
+.btn-confirm-sale {
+    background: var(--status-ready);
+    color: white;
+}
+
+.btn-confirm-sale:hover {
+    background: #00cc6a;
+    transform: translateY(-2px);
+}
+
+/* ===== EDIT HISTORY MODAL ===== */
+.edit-history-modal {
+    max-width: 450px;
+    margin: 0 auto;
+}
+
+.edit-history-modal h2 {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.edit-history-summary {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+    padding: var(--spacing-md);
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-md);
+}
+
+.edit-history-summary h3 {
+    margin: var(--spacing-sm) 0 var(--spacing-xs);
+}
+
+.edit-history-summary .combo-info {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.edit-history-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.edit-history-form .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+}
+
+.edit-history-form .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.edit-history-form label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.edit-history-form input,
+.edit-history-form textarea {
+    padding: var(--spacing-sm);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+}
+
+.edit-history-form input:focus,
+.edit-history-form textarea:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+}
+
+.edit-history-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--spacing-sm);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+    .history-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .profit-preview-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .history-stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .history-entry-main {
+        flex-direction: column;
+    }
+    
+    .history-entry-numbers {
+        width: 100%;
+    }
+    
+    .sale-actions {
+        flex-direction: column;
+    }
+    
+    .edit-history-form .form-row {
+        grid-template-columns: 1fr;
+    }
+}

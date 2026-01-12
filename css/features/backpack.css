@@ -1,0 +1,381 @@
+/* ========================================
+   TF2 MANN CO. FORGE - BACKPACK
+   Estilos de la mochila e inventario
+   ======================================== */
+
+/* ===== BACKPACK SECTION ===== */
+.backpack-section {
+    margin-bottom: var(--spacing-xl);
+}
+
+.backpack-section.hidden {
+    display: none;
+}
+
+/* Filter Buttons */
+.filter-buttons {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.filter-btn {
+    background: var(--bg-input);
+    border: 1px solid var(--border-inactive);
+    color: var(--text-secondary);
+        padding: var(--spacing-sm) var(--spacing-md);
+        background: #2c2f36; /* gris oscuro */
+        border-color: #44474e;
+        color: #e0e0e0;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-weight: 600;
+    transition: all var(--transition-fast);
+}
+
+.filter-btn:hover {
+    background: #3fd18b; /* verde menta para hover */
+    border-color: #3fd18b;
+    color: white;
+}
+
+.filter-btn.active {
+    background: var(--accent-blu);
+    border-color: var(--accent-blu);
+    color: white;
+}
+
+/* Stock Grid */
+.stock-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.stock-item {
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    border: 1px solid var(--border-inactive);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    transition: all var(--transition-normal);
+}
+
+.stock-item:hover {
+    border-color: var(--accent-blu);
+    box-shadow: var(--shadow-sm);
+}
+
+.stock-icon {
+    font-size: 2rem;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-input);
+    border-radius: var(--radius-sm);
+}
+
+.stock-info {
+    flex: 1;
+}
+
+.stock-name {
+    font-weight: 600;
+    color: var(--text-main);
+    margin-bottom: 2px;
+}
+
+.stock-category {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+}
+
+.stock-controls {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.stock-btn {
+    width: 36px;
+    height: 36px;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.stock-btn.minus {
+    background: var(--accent-red);
+    color: white;
+}
+
+.stock-btn.minus:hover {
+    background: #ff5555;
+}
+
+.stock-btn.plus {
+    background: var(--accent-blu);
+    color: white;
+}
+
+.stock-btn.plus:hover {
+    background: #3385ff;
+}
+
+.stock-count {
+    font-size: 1.4rem;
+    font-weight: 900;
+    min-width: 50px;
+    text-align: center;
+    color: var(--text-main);
+}
+
+/* ============================================
+   CURRENCY GRID EN MOCHILA
+   ============================================ */
+
+.currency-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.stock-item.currency-item {
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    transition: all var(--transition-fast);
+}
+
+.stock-item.currency-item:hover {
+    border-color: var(--accent-primary);
+    transform: translateY(-2px);
+}
+
+/* Header - Nombre del item */
+.stock-item.currency-item .stock-header {
+    width: 100%;
+    text-align: center;
+    padding-bottom: var(--spacing-xs);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.stock-item.currency-item .stock-header .stock-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* Body - Imagen + Controles */
+.stock-item.currency-item .stock-body {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    width: 100%;
+}
+
+.stock-item.currency-item .stock-icon {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80px;
+}
+
+.stock-item.currency-item .stock-icon img {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+}
+
+.stock-item.currency-item .stock-controls {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-xs);
+}
+
+/* Footer - Hint */
+.stock-item.currency-item .stock-footer {
+    width: 100%;
+    text-align: center;
+    padding-top: var(--spacing-xs);
+    border-top: 1px solid var(--border-color);
+}
+
+.stock-item .stock-hint {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    display: block;
+}
+
+.stock-controls .stock-input {
+    width: 70px;
+    padding: var(--spacing-sm);
+    background: var(--bg-input);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.stock-controls .stock-input:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+}
+
+/* Botones +/- en currency */
+.stock-item.currency-item .stock-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 1.2rem;
+}
+
+/* ============================================
+   ROBOT PARTS - Tarjetas en Mochila
+   ============================================ */
+
+.stock-item.parts-item {
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    transition: all var(--transition-fast);
+}
+
+.stock-item.parts-item:hover {
+    border-color: var(--accent-primary);
+    transform: translateY(-2px);
+}
+
+/* Header - Nombre */
+.stock-item.parts-item .stock-header {
+    width: 100%;
+    text-align: center;
+    padding-bottom: var(--spacing-xs);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.stock-item.parts-item .stock-header .stock-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* Body - Imagen + Controles */
+.stock-item.parts-item .stock-body {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    width: 100%;
+}
+
+.stock-item.parts-item .stock-icon {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70px;
+}
+
+.stock-item.parts-item .stock-icon img {
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+}
+
+.stock-item.parts-item .stock-controls {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-xs);
+}
+
+/* Footer - Categoría + Precio */
+.stock-item.parts-item .stock-footer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: var(--spacing-xs);
+    border-top: 1px solid var(--border-color);
+}
+
+.stock-item.parts-item .stock-category {
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.stock-item.parts-item .part-price {
+    font-size: 0.75rem;
+    color: var(--accent-gold);
+}
+
+.currency-summary {
+    grid-column: 1 / -1;
+    background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-secondary));
+    border: 2px solid var(--accent-gold);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.currency-summary .summary-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.currency-summary .summary-icon {
+    font-size: 1.5rem;
+}
+
+.currency-summary .summary-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.currency-summary .summary-values {
+    display: flex;
+    gap: var(--spacing-xl);
+}
+
+.currency-summary .summary-value {
+    text-align: center;
+}
+
+.currency-summary .value-amount {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--accent-gold);
+}
+
+.currency-summary .value-label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}

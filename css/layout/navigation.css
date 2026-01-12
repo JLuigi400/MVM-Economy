@@ -1,0 +1,44 @@
+/* ========================================
+   TF2 MANN CO. FORGE - NAVEGACIÓN
+   Tabs y navegación principal
+   ======================================== */
+
+.tab-navigation {
+    background: var(--bg-card);
+    display: flex;
+    padding: var(--spacing-sm) var(--spacing-xl);
+    gap: var(--spacing-sm);
+    border-bottom: 1px solid var(--border-inactive);
+}
+
+.tab-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    padding: var(--spacing-md) var(--spacing-lg);
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-normal);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.tab-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-main);
+}
+
+.tab-btn.active {
+    background: var(--accent-red);
+    color: white;
+    box-shadow: var(--shadow-sm);
+}
+
+.tab-icon {
+    font-size: 1.2rem;
+}

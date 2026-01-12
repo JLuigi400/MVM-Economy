@@ -1,0 +1,22 @@
+/* ========================================
+   TF2 MANN CO. FORGE - FOOTER
+   Estilos del footer principal
+   ======================================== */
+
+.main-footer {
+    text-align: center;
+    padding: var(--spacing-lg);
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    border-top: 1px solid var(--border-inactive);
+    margin-top: var(--spacing-xl);
+}
+
+.main-footer a {
+    color: var(--accent-blu);
+    text-decoration: none;
+}
+
+.main-footer a:hover {
+    text-decoration: underline;
+}

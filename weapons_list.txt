@@ -1,0 +1,336 @@
+# TF2 ARMAS LISTADAS EN DATA.JS
+# Última actualización: 5 de Enero 2026
+# Para verificar cuáles armas faltan en el sistema de filtrado
+
+================================================================================
+SCOUT
+================================================================================
+
+PRIMARY (Arma Principal):
+- Scattergun (Stock)
+- Force-a-Nature
+- Baby Face's Blaster
+- Soda Popper
+- Shortstop
+- Back Scatter
+
+SECONDARY (Arma Secundaria):
+- Pistol (Stock)
+- [✅] C.A.P.P.E.R (Pistol Reskin) 
+- [✅] Lugermorph (Pistol Reskin)
+- Bonk! Atomic Punch
+- Crit-a-Cola
+- Mad Milk
+- [✅] Mutated Milk (Mad Milk Reskin)
+- Winger
+- Pretty Boy's Pocket Pistol
+- Flying Guillotine
+
+MELEE (Cuerpo a Cuerpo):
+- Bat (Stock)
+- Sandman
+- Boston Basher
+- Atomizer
+- Candy Cane
+- Fan O'War
+- Holy Mackerel
+- Wrap Assassin
+- [✅] Sun-on-a-Stick
+- [✅] Three-Rune Blade (Promocional / Boston Basher Reskin)
+- [✅] Batsaber (Bat Reskin)
+- [✅] Unarmed Combat (Holy Mackerel Reskin)
+
+================================================================================
+SOLDIER
+================================================================================
+
+PRIMARY (Arma Principal):
+- Rocket Launcher (Stock)
+- Black Box
+- Direct Hit
+- Original
+- Liberty Launcher
+- Cow Mangler 5000
+- Beggar's Bazooka
+- Air Strike
+- [✅] Rocket Jumper
+
+SECONDARY (Arma Secundaria):
+- Shotgun (Stock)
+- Buff Banner
+- Gunboats
+- Battalion's Backup
+- Concheror
+- Mantreads
+- Reserve Shooter
+- Righteous Bison
+- B.A.S.E. Jumper
+- Panic Attack
+
+MELEE (Cuerpo a Cuerpo):
+- Shovel (Stock)
+- Equalizer
+- Pain Train
+- Half-Zatoichi
+- Disciplinary Action
+- Market Gardener
+- Escape Plan
+
+================================================================================
+PYRO
+================================================================================
+
+PRIMARY (Arma Principal):
+- Flame Thrower (Stock)
+- Nostromo Napalmer (Flame Thrower Reskin)
+- Backburner
+- Degreaser
+- Phlogistinator
+- Rainblower (Flame Thrower Reskin)
+- Dragon's Fury
+
+SECONDARY (Arma Secundaria):
+- Shotgun (Stock)
+- Flare Gun
+- Detonator
+- Reserve Shooter
+- Manmelter
+- Scorch Shot
+- Panic Attack
+- Thermal Thruster
+- Gas Passer
+
+MELEE (Cuerpo a Cuerpo):
+- Fire Axe (Stock)
+- Axtinguisher
+- [✅] Postal Pummeler (Axtinguisher Reskin)
+- Homewrecker
+- [✅] Maul (Homewrecker Reskin / Promocional)
+- Powerjack
+- Back Scratcher
+- Sharpened Volcano Fragment
+- Third Degree
+- [✅] Lollichop (Fire Axe Reskin)
+- Neon Annihilator
+- Hot Hand
+
+================================================================================
+DEMOMAN
+================================================================================
+
+PRIMARY (Arma Principal):
+- Grenade Launcher (Stock)
+- Loch-n-Load
+- Ali Baba's Wee Booties
+- Bootlegger
+- Loose Cannon
+- B.A.S.E. Jumper
+- Iron Bomber
+
+SECONDARY (Arma Secundaria):
+- Stickybomb Launcher (Stock)
+- Chargin' Targe
+- Scottish Resistance
+- Sticky Jumper
+- Splendid Screen
+- Tide Turner
+- Quickiebomb Launcher
+
+MELEE (Cuerpo a Cuerpo):
+- Bottle (Stock)
+- [✅] Scottish Handshake (Bottle Reskin)
+- Eyelander
+- [✅] Horseless Headless Horsemann's Headtaker
+- [✅] Nessie's Nine Iron
+- Pain Train
+- Scotsman's Skullcutter
+- Claidheamh Mòr
+- Ullapool Caber
+- Half-Zatoichi
+- Persian Persuader
+
+================================================================================
+HEAVY
+================================================================================
+
+PRIMARY (Arma Principal):
+- Minigun (Stock)
+- Iron Curtain (Minigun Reskin)
+- Natascha
+- Brass Beast
+- Tomislav
+- Huo-Long Heater
+
+SECONDARY (Arma Secundaria):
+- Shotgun (Stock)
+- Sandvich
+- [✅] Robo-Sandvich (Sandvich Reskin)
+- Dalokohs Bar
+- [✅] Fishcake (Dalokohs Bar Reskin)
+- Buffalo Steak Sandvich
+- Family Business
+- Panic Attack
+- Second Banana
+
+MELEE (Cuerpo a Cuerpo):
+- Fists (Stock)
+- [✅] Apoco-Fists (Promocional / Fists Reskin)
+- Killing Gloves of Boxing
+- Gloves of Running Urgently
+- [✅] Bread Bite (Gloves of Running Urgently Reskin)
+- Warrior's Spirit
+- Fists of Steel
+- Eviction Notice
+- Holiday Punch
+
+================================================================================
+ENGINEER
+================================================================================
+
+PRIMARY (Arma Principal):
+- Shotgun (Stock)
+- Frontier Justice
+- Widowmaker
+- Pomson 6000
+- Rescue Ranger
+- Panic Attack
+
+SECONDARY (Arma Secundaria):
+- Pistol (Stock)
+- Lugermorph (Pistol Reskin)
+- [✅] C.A.P.P.E.R (Pistol Reskin)
+- Wrangler
+- [✅] Giger Counter (Wrangler Reskin)
+- Short Circuit
+
+MELEE (Cuerpo a Cuerpo):
+- Wrench (Stock)
+- Gunslinger
+- Southern Hospitality
+- Jag
+- Eureka Effect
+
+================================================================================
+MEDIC
+================================================================================
+
+PRIMARY (Arma Principal):
+- Syringe Gun (Stock)
+- Blutsauger
+- Crusader's Crossbow
+- Overdose
+
+SECONDARY (Arma Secundaria):
+- Medi Gun (Stock)
+- Kritzkrieg
+- Quick-Fix
+- Vaccinator
+
+MELEE (Cuerpo a Cuerpo):
+- Bonesaw (Stock)
+- Ubersaw
+- Vita-Saw
+- Amputator
+- Solemn Vow
+
+================================================================================
+SNIPER
+================================================================================
+
+PRIMARY (Arma Principal):
+- Sniper Rifle (Stock)
+- AWPer Hand
+- Huntsman
+- Fortified Compound
+- Sydney Sleeper
+- Bazaar Bargain
+- Machina
+- [✅] Shooting Star (Machina Reskin)
+- [✅] Hitman's Heatmaker
+- Classic
+
+SECONDARY (Arma Secundaria):
+- SMG (Stock)
+- Jarate
+- [✅] Self-Aware Beauty Mark (Jarate Reskin)
+- Razorback
+- Darwin's Danger Shield
+- Cozy Camper
+- Cleaner's Carbine
+
+MELEE (Cuerpo a Cuerpo):
+- Kukri (Stock)
+- Tribalman's Shiv
+- Bushwacka
+- Shahanshah
+
+================================================================================
+SPY
+================================================================================
+
+PRIMARY (Arma Principal):
+- Revolver (Stock)
+- [✅] Big Kill (Revolver Reskin)
+- Ambassador
+- L'Etranger
+- Enforcer
+- Diamondback
+
+SECONDARY (Arma Secundaria):
+- Sapper (Stock)
+- [✅] Ap-Sap (Sapper Reskin)
+- [✅] Snack Attack (Sapper Reskin)
+- Red-Tape Recorder
+
+MELEE (Cuerpo a Cuerpo):
+- Knife (Stock)
+- Sharp Dresser (Knife Reskin)
+- [✅] Black Rose (Promocional / Knife Reskin)
+- Your Eternal Reward
+- [✅] Wanga Prick (Your Eternal Reward Reskin)
+- Conniver's Kunai
+- Big Earner
+- Spy-cicle
+
+================================================================================
+MULTICLASS (Armas para todas las clases)
+================================================================================
+
+MELEE (Cuerpo a Cuerpo):
+- Frying Pan
+- Ham Shank
+- Conscientious Objector
+- Freedom Staff
+- Bat Outta Hell
+- Crossing Guard
+- Necro Smasher
+- Prinny Machete
+- Memory Maker
+- Golden Frying Pan
+
+================================================================================
+ARMAS QUE PODRÍAN FALTAR (Para agregar según necesidad)
+================================================================================
+
+ENGINEER:
+- [ ] Festive Variants (Estos son añadidos externos, que pueden hacer valer mas al arma de base.)
+
+MEDIC:
+- [ ] Festive Variants (Estos son añadidos externos, que pueden hacer valer mas al arma de base.)
+
+SNIPER:
+- [ ] Festive Variants (Estos son añadidos externos, que pueden hacer valer mas al arma de base.)
+
+SPY:
+- [ ] Festive Variants (Estos son añadidos externos, que pueden hacer valer mas al arma de base.)
+
+================================================================================
+NOTAS
+================================================================================
+
+1. Las armas promocionales y reskins comparten stats con las originales
+2. Los Killstreak Kits funcionan en cualquier arma del mismo nombre base
+3. Algunos items no pueden tener Killstreak (PDAs, Buildings, etc.)
+4. Las armas Festive son variantes visuales de las originales
+
+================================================================================

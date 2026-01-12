@@ -1,0 +1,13 @@
+# Comandos para iniciar el servidor y abrir el navegador simple en VS Code
+
+# 1. Iniciar servidor en localhost:3000 (Python 3.x)
+python -m http.server 3000
+
+# 2. Abrir Simple Browser en VS Code (puedes pegar este comando en la paleta de comandos de VS Code)
+# O usa el siguiente comando en la terminal de comandos de VS Code:
+code --open-url http://localhost:3000
+
+# Alternativamente, puedes abrir el Simple Browser manualmente:
+# - Abre la paleta de comandos (Ctrl+Shift+P)
+# - Escribe: Simple Browser: Open
+# - Ingresa la URL: http://localhost:3000
