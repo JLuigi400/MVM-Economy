@@ -28,9 +28,20 @@ Y si vas a crearlos o comprarlos dependiendo de tu elección
      code --open-url http://localhost:3000
      ```
 
+## Traducción y colaboración
+- El proyecto esta en proceso de ser multi-idioma (Español/Ingles).
+   Nota: En un futuro se añadirá traducción completa al inglés y soporte para más idiomas.
+   Puedes contribuir con las traducciones despues.
+- ¡Colabora, reporta bugs y sugiere mejoras vía Pull Request o Issues!
+
 ## Estructura del proyecto
 - `index.html`, `styles.css`, `js/`, `css/`, `logo_img/`, etc.
 - Todos los archivos y carpetas necesarios están incluidos en este repositorio.
+- index.html — Página principal
+- js — Lógica y módulos de la app
+- css — Estilos organizados por componentes
+- lang — Archivos de traducción (Español/Inglés)
+- logo_img — Imágenes y recursos
 
 ## Créditos y derechos
 
@@ -40,4 +51,5 @@ Este proyecto es de uso libre para la comunidad, bajo licencia MIT. Puedes contr
 
 ---
 © 2026 Jorge Luigi400 & GitHub Copilot. Todos los derechos reservados.
+
 
