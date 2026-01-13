@@ -1,6 +1,12 @@
 # MVM Economy
 
 Proyecto web para gestión y análisis de economía de kits Killstreak en TF2.
+Util para revisar cuantas piezas de robot, fabricadores Killstreak y sus costes de comunidad.
+Todo es manual en la insercion de Datos debido a no contar con la API de Steam o Valve para esto
+Mas ayuda a revisar cuales Fabricadores valen la pena, en base a los macro datos de la comunidad de TF2.
+Y si vas a crearlos o comprarlos dependiendo de tu elección
+
+100% Libre y dispuesto a mejorar con la comunidad, para refinar este proyecto.
 
 ## Cómo activar el servidor y abrir el Simple Browser
 
@@ -34,3 +40,4 @@ Este proyecto es de uso libre para la comunidad, bajo licencia MIT. Puedes contr
 
 ---
 © 2026 Jorge Luigi400 & GitHub Copilot. Todos los derechos reservados.
+
